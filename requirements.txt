@@ -1,0 +1,2 @@
+https://github.com/PhoenixError/Telethon/archive/New.zip
+py-Humanoid==2021.7.19
