@@ -180,13 +180,13 @@ async def gsearch(q_event):
         page = 1
     search_args = (str(match), int(page), bool(cache))
     gsearch = GoogleSearch()
-    gresHumans = await gsearch.async_search(*search_args)
+    result = await gsearch.async_search(*search_args)
     msg = ""
-    for i in range(len(gresHumans["links"])):
+    for i in range(len(result["links"])):
         try:
-            title = gresHumans["titles"][i]
-            link = gresHumans["links"][i]
-            desc = gresHumans["descriptions"][i]
+            title = result["titles"][i]
+            link = result["links"][i]
+            desc = result["descriptions"][i]
             msg += f"👉[{title}]({link})\n`{desc}`\n\n"
             searcher.append(
                 await q_event.builder.article(
@@ -237,13 +237,13 @@ async def yahoosearch(q_event):
         page = 1
     search_args = (str(match), int(page), bool(cache))
     gsearch = YahooSearch()
-    gresHumans = await gsearch.async_search(*search_args)
+    result = await gsearch.async_search(*search_args)
     msg = ""
-    for i in range(len(gresHumans["links"])):
+    for i in range(len(result["links"])):
         try:
-            title = gresHumans["titles"][i]
-            link = gresHumans["links"][i]
-            desc = gresHumans["descriptions"][i]
+            title = result["titles"][i]
+            link = result["links"][i]
+            desc = result["descriptions"][i]
             msg += f"👉[{title}]({link})\n`{desc}`\n\n"
             searcher.append(
                 await q_event.builder.article(
