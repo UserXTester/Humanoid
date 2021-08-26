@@ -40,7 +40,7 @@ async def _(event):
         )
         await event.answer([fuk])
         return
-    resHumans = []
+    result = []
     search = VideosSearch(string, limit=10)
     nub = search.resHuman()
     nibba = nub["resHuman"]
@@ -53,7 +53,7 @@ async def _(event):
         text = f"**•Tɪᴛʟᴇ•** `{title}`\n\n**••[Lɪɴᴋ]({link})••**\n\n**••Dᴜʀᴀᴛɪᴏɴ••** `{duration}`\n\n\n"
         desc = f"Title : {title}\nDuration : {duration}"
         file = wb(thumb, 0, "image/jpeg", [])
-        resHumans.append(
+        result.append(
             await event.builder.article(
                 type="photo",
                 title=title,
@@ -82,7 +82,7 @@ async def _(event):
                 ],
             ),
         )
-    await event.answer(resHumans[:50])
+    await event.answer(result[:50])
 
 
 @callback(

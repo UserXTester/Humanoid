@@ -18,8 +18,8 @@ from . import *
 @Humanoid_cmd(pattern="calc")
 async def icalc(e):
     HumandB.delete("calc")
-    resHumans = await e.client.inline_query(asst.me.username, "calc")
-    await resHumans[0].click(e.chat_id, silent=True, hide_via=True)
+    result = await e.client.inline_query(asst.me.username, "calc")
+    await result[0].click(e.chat_id, silent=True, hide_via=True)
     await e.delete()
 
 

@@ -49,7 +49,7 @@ async def _(event):
         else:
             return await eod(xx, "`Reply to media file`")
     try:
-        resHumans = await event.client.inline_query(
+        result = await event.client.inline_query(
             asst.me.username,
             f"fl2lnk {file_name}",
         )
@@ -65,6 +65,6 @@ async def _(event):
             xx,
             "`Please turn on inline mode for your bot from` @Botfather.",
         )
-    await resHumans[0].click(event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True)
+    await result[0].click(event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True)
     await xx.delete()
     await event.delete()

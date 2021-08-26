@@ -11,7 +11,7 @@
     For doing google search.
 
 • `{i}img <query>`
-  `{i}img <query> ; <no of resHumans>`
+  `{i}img <query> ; <no of result>`
     For doing Images search.
 
 • `{i}reverse <query>`

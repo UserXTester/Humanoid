@@ -43,7 +43,7 @@ async def _help(Human):
     else:
         tgbot = asst.me.username
         try:
-            resHumans = await Human.client.inline_query(tgbot, "Humand")
+            result = await Human.client.inline_query(tgbot, "Humand")
         except BotMethodInvalidError:
             z = []
             for x in LIST.values():
@@ -82,5 +82,5 @@ async def _help(Human):
             )
         except dis:
             return await eor(Human, get_string("help_3"))
-        await resHumans[0].click(Human.chat_id, reply_to=Human.reply_to_msg_id, hide_via=True)
+        await result[0].click(Human.chat_id, reply_to=Human.reply_to_msg_id, hide_via=True)
         await Human.delete()
