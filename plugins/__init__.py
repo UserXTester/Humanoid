@@ -15,8 +15,12 @@ from pyHumanoid.functions.sudos import *
 from pyHumanoid.version import Humanoid_version
 from telethon import Button
 from telethon.tl import functions, types
+try:
+    from strings import get_string
+except ModuleNotFoundError:
+    pip install -U strings
+    from strings import get_string
 
-from strings import get_string
 
 try:
     import glitch_me
