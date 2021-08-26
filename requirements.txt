@@ -3,7 +3,6 @@ py-Humanoid==0.2
 asyncurban
 redis
 carbonnow
-strings
 cairosvg
 emoji
 decouple
