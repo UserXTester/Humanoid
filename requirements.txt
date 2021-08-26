@@ -1,6 +1,7 @@
 https://github.com/PhoenixError/Telethon/archive/New.zip
 py-Humanoid
 asyncurban
+redis
 carbonnow
 cairosvg
 emoji
