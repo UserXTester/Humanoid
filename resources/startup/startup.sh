@@ -24,5 +24,5 @@ echo "
       Visit @TheHumanoid for updates!!
 
 "
-
+pip install git+https://github.com/InternetAmethyst/humanoid #Temporary basis
 python3 -m pyHumanoid
