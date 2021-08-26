@@ -18,7 +18,7 @@ from telethon.tl import functions, types
 try:
     from strings import get_string
 except ModuleNotFoundError:
-    pip install -U strings
+    os.system("pip install -U strings")
     from strings import get_string
 
 
