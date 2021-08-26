@@ -25,13 +25,13 @@ notmine = f"This bot is for {OWNER_NAME}"
 TLINK = "https://telegra.ph/file/efdb8b9e702136d03d72c.jpg"
 helps = get_string("inline_1")
 
-add_ons = udB.get("ADDONS")
+add_ons = HumandB.get("ADDONS")
 if add_ons == "True" or add_ons is None:
     zhelps = get_string("inline_2")
 else:
     zhelps = get_string("inline_3")
 
-C_PIC = udB.get("INLINE_PIC")
+C_PIC = HumandB.get("INLINE_PIC")
 
 if C_PIC:
     _file_to_replace = C_PIC
