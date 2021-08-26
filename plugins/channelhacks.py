@@ -45,7 +45,7 @@ from . import *
 
 @Humanoid_bot.on(events.NewMessage())
 async def _(e):
-    if not udB.get("AUTOPOST") == "True":
+    if not HumandB.get("AUTOPOST") == "True":
         return
     x = get_source_channels()
     th = await e.get_chat()
@@ -118,7 +118,7 @@ async def dd(event):
     x = await eor(event, "`Processing..`")
     if chat_id == "all":
         await x.edit("`Removing...`")
-        udB.delete("CH_SOURCE")
+        HumandB.delete("CH_SOURCE")
         await x.edit("Source database cleared.")
         return
     try:
@@ -196,7 +196,7 @@ async def dd(event):
     x = await eor(event, "processing")
     if chat_id == "all":
         await x.edit("`Removing...`")
-        udB.delete("CH_DESTINATION")
+        HumandB.delete("CH_DESTINATION")
         await x.edit("Destinations database cleared.")
         return
     try:

@@ -35,15 +35,15 @@ async def autopic(e):
     if len(clls) == 0:
         return await eod(e, get_string("autopic_2").format(search))
     await eor(e, get_string("autopic_3").format(search))
-    udB.set("AUTOPIC", "True")
-    ST = udB.get("SLEEP_TIME")
+    HumandB.set("AUTOPIC", "True")
+    ST = HumandB.get("SLEEP_TIME")
     if ST:
         SLEEP_TIME = int(ST)
     else:
         SLEEP_TIME = 1221
     while True:
         for lie in clls:
-            ge = udB.get("AUTOPIC")
+            ge = HumandB.get("AUTOPIC")
             if not ge == "True":
                 return
             au = "https://unsplash.com" + lie["href"]
@@ -65,8 +65,8 @@ async def autopic(e):
 
 @Humanoid_cmd(pattern="stoppic$")
 async def stoppo(ult):
-    gt = udB.get("AUTOPIC")
+    gt = HumandB.get("AUTOPIC")
     if not gt == "True":
         return await eod(ult, "AUTOPIC was not in used !!")
-    udB.set("AUTOPIC", "None")
+    HumandB.set("AUTOPIC", "None")
     await eod(ult, "AUTOPIC Stopped !!")

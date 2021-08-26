@@ -46,7 +46,7 @@ async def _(e):
     except no_admin:
         return await eod(xx, "`I m not an admin`", time=10)
     await e.client.send_message(
-        int(udB.get("LOG_CHANNEL")), f"#Deleted\nDeleted {e.chat_id}"
+        int(HumandB.get("LOG_CHANNEL")), f"#Deleted\nDeleted {e.chat_id}"
     )
 
 

@@ -58,7 +58,7 @@ async def _(e):
     variable = uf(dl)
     os.remove(dl)
     nn = "https://telegra.ph" + variable[0]
-    udB.set("CUSTOM_THUMBNAIL", str(nn))
+    HumandB.set("CUSTOM_THUMBNAIL", str(nn))
     await bash(f"wget {nn} -O resources/extras/Humanoid.jpg")
     await eor(e, f"Added [This]({nn}) As Your Custom Thumbnail", link_preview=False)
 

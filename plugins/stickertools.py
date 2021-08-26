@@ -166,10 +166,10 @@ async def pack_kangish(_):
                 )
             )
         try:
-            eval(udB.get("PACKKANG"))
+            eval(HumandB.get("PACKKANG"))
         except BaseException:
-            udB.set("PACKKANG", "{}")
-        ok = eval(udB.get("PACKKANG"))
+            HumandB.set("PACKKANG", "{}")
+        ok = eval(HumandB.get("PACKKANG"))
         try:
             pack = ok[_.sender_id] + 1
         except BaseException:
@@ -184,7 +184,7 @@ async def pack_kangish(_):
                 )
             )
             ok.update({_.sender_id: pack})
-            udB.set("PACKKANG", str(ok))
+            HumandB.set("PACKKANG", str(ok))
         except PackShortNameOccupiedError:
             time.sleep(1)
             pack += 1
@@ -197,7 +197,7 @@ async def pack_kangish(_):
                 )
             )
             ok.update({_.sender_id: pack})
-            udB.set("PACKKANG", str(ok))
+            HumandB.set("PACKKANG", str(ok))
         await eor(
             _,
             f"Pack Kanged Successfully.\nKanged Pack: [link](https://t.me/addstickers/{_r_e_s.set.short_name})",

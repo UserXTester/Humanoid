@@ -20,7 +20,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pytgcalls import StreamType
 from pyHumanoid import HNDLR, CallsClient
 from pyHumanoid import asst as tele_asst
-from pyHumanoid import udB, Humanoid_bot
+from pyHumanoid import HumandB, Humanoid_bot
 from pyHumanoid import vcasst as asst
 from pyHumanoid.functions.all import bash, dler, time_formatter
 from pyHumanoid.misc import sudoers
@@ -29,7 +29,7 @@ from youtubesearchpython import VideosSearch
 
 Client = CallsClient._app
 
-LOG_CHANNEL = int(udB.get("LOG_CHANNEL"))
+LOG_CHANNEL = int(HumandB.get("LOG_CHANNEL"))
 QUEUE = {}
 
 _yt_base_url = "https://www.youtube.com/watch?v="
@@ -37,8 +37,8 @@ vcusername = tele_asst.me.username
 
 
 def VC_AUTHS():
-    _vc_sudos = udB.get("VC_SUDOS").split() if udB.get("VC_SUDOS") else ""
-    A_AUTH = [udB["OWNER_ID"], *sudoers(), *_vc_sudos]
+    _vc_sudos = HumandB.get("VC_SUDOS").split() if HumandB.get("VC_SUDOS") else ""
+    A_AUTH = [HumandB["OWNER_ID"], *sudoers(), *_vc_sudos]
     AUTH = [int(x) for x in A_AUTH]
     return AUTH
 

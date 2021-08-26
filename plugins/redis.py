@@ -39,7 +39,7 @@ async def _(ult):
     try:
         delim = " " if re.search("[|]", ult.pattern_match.group(1)) is None else " | "
         data = ult.pattern_match.group(1).split(delim, maxsplit=1)
-        udB.set(data[0], data[1])
+        HumandB.set(data[0], data[1])
         redisdata = Redis(data[0])
         await ok.edit(
             "Redis Key Value Pair Updated\nKey : `{}`\nValue : `{}`".format(
@@ -61,7 +61,7 @@ async def _(ult):
     ok = await eor(ult, "`Deleting data from Redis ...`")
     try:
         key = ult.pattern_match.group(1)
-        k = udB.delete(key)
+        k = HumandB.delete(key)
         if k == 0:
             return await ok.edit("`No Such Key.`")
         await ok.edit(f"`Successfully deleted key {key}`")
@@ -81,7 +81,7 @@ async def _(ult):
     data = ult.pattern_match.group(1).split(delim)
     if Redis(data[0]):
         try:
-            udB.rename(data[0], data[1])
+            HumandB.rename(data[0], data[1])
             await ok.edit(
                 "Redis Key Rename Successful\nOld Key : `{}`\nNew Key : `{}`".format(
                     data[0],

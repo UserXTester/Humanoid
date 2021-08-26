@@ -38,7 +38,7 @@ async def _(e):
 
 @Humanoid_cmd(pattern="listclean$")
 async def _(e):
-    k = udB.get("CLEANCHAT")
+    k = HumandB.get("CLEANCHAT")
     if k:
         k = k.split(" ")
         o = ""

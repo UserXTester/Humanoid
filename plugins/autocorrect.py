@@ -27,10 +27,10 @@ async def acc(e):
     if not is_fullsudo(e.sender_id):
         return await eod(ult, "`This Command Is Sudo Restricted.`")
     if Redis("AUTOCORRECT") != "True":
-        udB.set("AUTOCORRECT", "True")
+        HumandB.set("AUTOCORRECT", "True")
         await eod(e, "AUTOCORRECT Feature On")
     else:
-        udB.delete("AUTOCORRECT")
+        HumandB.delete("AUTOCORRECT")
         await eod(e, "AUTOCORRECT Feature Off")
 
 

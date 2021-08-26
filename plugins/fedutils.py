@@ -91,8 +91,8 @@ async def _(event):
     if str(uid) in DEVLIST:
         return await msg.edit("The user is my Dev and cannot be FBanned!")
 
-    if udB.get("FBAN_GROUP_ID"):
-        chat = int(udB.get("FBAN_GROUP_ID"))
+    if HumandB.get("FBAN_GROUP_ID"):
+        chat = int(HumandB.get("FBAN_GROUP_ID"))
     else:
         chat = await event.get_chat()
     fedList = []
@@ -163,13 +163,13 @@ async def _(event):
         await msg.edit("Specified FBan Group ID is incorrect.")
         return
     await asyncio.sleep(3)
-    if udB.get("EXCLUDE_FED"):
-        excludeFed = udB.get("EXCLUDE_FED").split(" ")
+    if HumandB.get("EXCLUDE_FED"):
+        excludeFed = HumandB.get("EXCLUDE_FED").split(" ")
         for n in range(len(excludeFed)):
             excludeFed[n] = excludeFed[n].strip()
     exCount = 0
     for fed in fedList:
-        if udB.get("EXCLUDE_FED") and fed in excludeFed:
+        if HumandB.get("EXCLUDE_FED") and fed in excludeFed:
             await Humanoid.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue
@@ -233,8 +233,8 @@ async def _(event):
                 REASON = " #TBMassUnBanned "
             except BaseException:
                 return await msg.edit("`No user designated!`")
-    if udB.get("FBAN_GROUP_ID"):
-        chat = int(udB.get("FBAN_GROUP_ID"))
+    if HumandB.get("FBAN_GROUP_ID"):
+        chat = int(HumandB.get("FBAN_GROUP_ID"))
     else:
         chat = await event.get_chat()
     if not len(fedList):
@@ -304,13 +304,13 @@ async def _(event):
         await msg.edit("Specified FBan Group ID is incorrect.")
         return
     await asyncio.sleep(3)
-    if udB.get("EXCLUDE_FED"):
-        excludeFed = udB.get("EXCLUDE_FED").split(" ")
+    if HumandB.get("EXCLUDE_FED"):
+        excludeFed = HumandB.get("EXCLUDE_FED").split(" ")
         for n in range(len(excludeFed)):
             excludeFed[n] = excludeFed[n].strip()
     exCount = 0
     for fed in fedList:
-        if udB.get("EXCLUDE_FED") and fed in excludeFed:
+        if HumandB.get("EXCLUDE_FED") and fed in excludeFed:
             await event.client.send_message(chat, f"{fed} Excluded.")
             exCount += 1
             continue

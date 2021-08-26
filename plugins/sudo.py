@@ -54,7 +54,7 @@ async def _(ult):
         else:
             mmm += f"`{id} is already a SUDO User...`"
     elif add_sudo(id):
-        udB.set("SUDO", "True")
+        HumandB.set("SUDO", "True")
         if name != "":
             mmm += f"**Added [{name}](tg://user?id={id}) as SUDO User**"
         else:
@@ -124,7 +124,7 @@ async def _(ult):
             msg += f"• [{name}](tg://user?id={i}) ( `{i}` )\n"
         else:
             msg += f"• `{i}` -> Invalid User\n"
-    m = udB.get("SUDO") if udB.get("SUDO") else "False"
+    m = HumandB.get("SUDO") if HumandB.get("SUDO") else "False"
     if m == "False":
         m = "[False](https://telegra.ph/Humanoid-04-06)"
     return await ok.edit(

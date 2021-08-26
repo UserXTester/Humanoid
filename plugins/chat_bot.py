@@ -53,7 +53,7 @@ async def rem_chatBot(event):
 @Humanoid_cmd(pattern="listai")
 async def lister(event):
     users = get_all_added()
-    if udB.get("CHATBOT_USERS") is None:
+    if HumandB.get("CHATBOT_USERS") is None:
         return await eod(event, "`No user has AI added.`")
     msg = ""
     for i in users:

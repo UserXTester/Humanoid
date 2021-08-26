@@ -106,7 +106,7 @@ _not_approved = {}
 sett = Redis("PMSETTING")
 if not sett:
     sett = "False"
-t_in = udB.get("INLINE_PM")
+t_in = HumandB.get("INLINE_PM")
 inline_pm = "True"
 if not t_in or t_in == "True":
     inline_pm = "True"
@@ -155,10 +155,10 @@ async def permitpm(event):
     if is_logger(user.id):
         return
     if Redis("PMLOG") == "True":
-        pl = udB.get("PMLOGGROUP")
+        pl = HumandB.get("PMLOGGROUP")
         if pl is not None:
             return await event.forward_to(int(pl))
-        await event.forward_to(int(udB.get("LOG_CHANNEL")))
+        await event.forward_to(int(HumandB.get("LOG_CHANNEL")))
 
 
 if sett == "True":
@@ -188,7 +188,7 @@ if sett == "True":
             name = await e.client.get_entity(e.chat_id)
             name0 = str(name.first_name)
             await asst.send_message(
-                int(udB.get("LOG_CHANNEL")),
+                int(HumandB.get("LOG_CHANNEL")),
                 f"#AutoApproved\n**OutGoing Message.**\nUser - [{name0}](tg://user?id={e.chat_id})",
             )
 
@@ -221,7 +221,7 @@ if sett == "True":
             try:
                 wrn = COUNT_PM[user.id] + 1
                 await asst.edit_message(
-                    int(udB.get("LOG_CHANNEL")),
+                    int(HumandB.get("LOG_CHANNEL")),
                     _not_approved[user.id],
                     f"Incoming PM from {mention} with {wrn}/{WARNS} warning!",
                     buttons=[
@@ -231,7 +231,7 @@ if sett == "True":
                 )
             except KeyError:
                 _not_approved[user.id] = await asst.send_message(
-                    int(udB.get("LOG_CHANNEL")),
+                    int(HumandB.get("LOG_CHANNEL")),
                     f"Incoming PM from {mention} with 1/{WARNS} warning!",
                     buttons=[
                         Button.inline("Approve PM", data=f"approve_{user.id}"),
@@ -343,7 +343,7 @@ if sett == "True":
                     del LASTMSG[user.id]
                 except KeyError:
                     await asst.send_message(
-                        int(udB.get("LOG_CHANNEL")),
+                        int(HumandB.get("LOG_CHANNEL")),
                         "PMPermit is messed! Pls restart the bot!!",
                     )
                     return LOGS.info("COUNT_PM is messed.")
@@ -352,7 +352,7 @@ if sett == "True":
                 name = await Humanoid.get_entity(user.id)
                 name0 = str(name.first_name)
                 await asst.edit_message(
-                    int(udB.get("LOG_CHANNEL")),
+                    int(HumandB.get("LOG_CHANNEL")),
                     _not_approved[user.id],
                     f"[{name0}](tg://user?id={user.id}) was Blocked for spamming.",
                 )
@@ -363,10 +363,10 @@ if sett == "True":
     async def _(e):
         x = e.pattern_match.group(1)
         if x == "start":
-            udB.set("MOVE_ARCHIVE", "True")
+            HumandB.set("MOVE_ARCHIVE", "True")
             await eod(e, "Now I will move new Unapproved DM's to archive")
         elif x == "stop":
-            udB.set("MOVE_ARCHIVE", "False")
+            HumandB.set("MOVE_ARCHIVE", "False")
             await eod(e, "Now I won't move new Unapproved DM's to archive")
         elif x == "clear":
             try:
@@ -398,7 +398,7 @@ if sett == "True":
                     pass
                 await eod(apprvpm, f"[{name0}](tg://user?id={uid}) `approved to PM!`")
                 await asst.edit_message(
-                    int(udB.get("LOG_CHANNEL")),
+                    int(HumandB.get("LOG_CHANNEL")),
                     _not_approved[uid],
                     f"#APPROVED\n\n`User: `[{name0}](tg://user?id={uid})",
                     buttons=[
@@ -428,7 +428,7 @@ if sett == "True":
                 await delete_pm_warn_msgs(user.id)
                 try:
                     await asst.edit_message(
-                        int(udB.get("LOG_CHANNEL")),
+                        int(HumandB.get("LOG_CHANNEL")),
                         _not_approved[uid],
                         f"#APPROVED\n\n`User: `[{name0}](tg://user?id={uid})",
                         buttons=[
@@ -438,7 +438,7 @@ if sett == "True":
                     )
                 except KeyError:
                     _not_approved[uid] = await asst.send_message(
-                        int(udB.get("LOG_CHANNEL")),
+                        int(HumandB.get("LOG_CHANNEL")),
                         f"#APPROVED\n\n`User: `[{name0}](tg://user?id={uid})",
                         buttons=[
                             Button.inline("Disapprove PM", data=f"disapprove_{uid}"),
@@ -472,7 +472,7 @@ if sett == "True":
                 await asyncio.sleep(5)
                 await e.delete()
                 await asst.edit_message(
-                    int(udB.get("LOG_CHANNEL")),
+                    int(HumandB.get("LOG_CHANNEL")),
                     _not_approved[aname],
                     f"#DISAPPROVED\n\n[{name0}](tg://user?id={bbb.id}) `was disapproved to PM you.`",
                     buttons=[
@@ -502,7 +502,7 @@ if sett == "True":
                 await e.delete()
                 try:
                     await asst.edit_message(
-                        int(udB.get("LOG_CHANNEL")),
+                        int(HumandB.get("LOG_CHANNEL")),
                         _not_approved[bbb.id],
                         f"#DISAPPROVED\n\n[{name0}](tg://user?id={bbb.id}) `was disapproved to PM you.`",
                         buttons=[
@@ -512,7 +512,7 @@ if sett == "True":
                     )
                 except KeyError:
                     _not_approved[bbb.id] = await asst.send_message(
-                        int(udB.get("LOG_CHANNEL")),
+                        int(HumandB.get("LOG_CHANNEL")),
                         f"#DISAPPROVED\n\n[{name0}](tg://user?id={bbb.id}) `was disapproved to PM you.`",
                         buttons=[
                             Button.inline("Approve PM", data=f"approve_{bbb.id}"),
@@ -553,7 +553,7 @@ async def blockpm(block):
         pass
     try:
         await asst.edit_message(
-            int(udB.get("LOG_CHANNEL")),
+            int(HumandB.get("LOG_CHANNEL")),
             _not_approved[user],
             f"#BLOCKED\n\n[{aname.first_name}](tg://user?id={user}) has been **blocked**.",
             buttons=[
@@ -562,7 +562,7 @@ async def blockpm(block):
         )
     except KeyError:
         _not_approved[user] = await asst.send_message(
-            int(udB.get("LOG_CHANNEL")),
+            int(HumandB.get("LOG_CHANNEL")),
             f"#BLOCKED\n\n[{aname.first_name}](tg://user?id={user}) has been **blocked**.",
             buttons=[
                 Button.inline("UnBlock", data=f"unblock_{user}"),
@@ -588,7 +588,7 @@ async def unblockpm(unblock):
         await eod(unblock, f"ERROR - {str(et)}")
     try:
         await asst.edit_message(
-            int(udB.get("LOG_CHANNEL")),
+            int(HumandB.get("LOG_CHANNEL")),
             _not_approved[user],
             f"#UNBLOCKED\n\n[{aname.first_name}](tg://user?id={user}) has been **unblocked**.",
             buttons=[
@@ -597,7 +597,7 @@ async def unblockpm(unblock):
         )
     except KeyError:
         _not_approved[user] = await asst.send_message(
-            int(udB.get("LOG_CHANNEL")),
+            int(HumandB.get("LOG_CHANNEL")),
             f"#UNBLOCKED\n\n[{aname.first_name}](tg://user?id={user}) has been **unblocked**.",
             buttons=[
                 Button.inline("Block", data=f"block_{user}"),
@@ -608,10 +608,10 @@ async def unblockpm(unblock):
 @Humanoid_cmd(pattern="listapproved")
 async def list_approved(event):
     xx = await eor(event, get_string("com_1"))
-    if udB.get("PMPERMIT") is None:
+    if HumandB.get("PMPERMIT") is None:
         return await eod(xx, "`You haven't approved anyone yet!`")
     users = []
-    for i in [int(x) for x in udB.get("PMPERMIT").split(" ")]:
+    for i in [int(x) for x in HumandB.get("PMPERMIT").split(" ")]:
         try:
             name = (await Humanoid.get_entity(i)).first_name
         except BaseException:

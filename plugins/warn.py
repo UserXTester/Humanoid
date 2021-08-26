@@ -63,7 +63,7 @@ async def warn(e):
     else:
         r = r + "|$|" + reason
     try:
-        x = udB.get("SETWARN")
+        x = HumandB.get("SETWARN")
         number, action = int(x.split()[0]), x.split()[1]
     except BaseException:
         number, action = 3, "kick"
@@ -167,7 +167,7 @@ async def warnset(e):
             return await eod(e, "`Incorrect Format`")
         if ("ban" or "kick" or "mute") not in action:
             return await eod(e, "`Only mute / ban / kick option suported`")
-        udB.set("SETWARN", f"{number} {action}")
+        HumandB.set("SETWARN", f"{number} {action}")
         return await eor(
             e, f"Done Your Warn Count is now {number} and Action is {action}"
         )

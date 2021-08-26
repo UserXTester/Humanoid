@@ -138,8 +138,8 @@ async def download(event):
                         if metadata.has("artist"):
                             artist = metadata.get("artist")
                         else:
-                            if udB.get("artist"):
-                                artist = udB.get("artist")
+                            if HumandB.get("artist"):
+                                artist = HumandB.get("artist")
                             else:
                                 artist = Humanoid_bot.first_name
                     except AttributeError:
@@ -215,8 +215,8 @@ async def download(event):
                     if metadata.has("artist"):
                         artist = metadata.get("artist")
                     else:
-                        if udB.get("artist"):
-                            artist = udB.get("artist")
+                        if HumandB.get("artist"):
+                            artist = HumandB.get("artist")
                         else:
                             artist = Humanoid_bot.first_name
                 except AttributeError:

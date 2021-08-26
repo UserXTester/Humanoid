@@ -17,7 +17,7 @@ from . import *
 
 @Humanoid_cmd(pattern="calc")
 async def icalc(e):
-    udB.delete("calc")
+    HumandB.delete("calc")
     results = await e.client.inline_query(asst.me.username, "calc")
     await results[0].click(e.chat_id, silent=True, hide_via=True)
     await e.delete()
@@ -60,36 +60,36 @@ async def _(e):
 async def _(e):
     x = (e.data_match.group(1)).decode()
     if x == "AC":
-        udB.delete("calc")
+        HumandB.delete("calc")
         return await e.edit(
             "• Humanoid Inline Calculator •",
             buttons=[Button.inline("Open Calculator Again", data="recalc")],
         )
     elif x == "C":
-        udB.delete("calc")
+        HumandB.delete("calc")
         return await e.answer("cleared")
     elif x == "⌫":
-        get = udB.get("calc")
+        get = HumandB.get("calc")
         if get:
-            udB.set("calc", get[:-1])
+            HumandB.set("calc", get[:-1])
             return await e.answer(str(get[:-1]))
     elif x == "%":
-        get = udB.get("calc")
+        get = HumandB.get("calc")
         if get:
-            udB.set("calc", get + "/100")
+            HumandB.set("calc", get + "/100")
             return await e.answer(str(get + "/100"))
     elif x == "÷":
-        get = udB.get("calc")
+        get = HumandB.get("calc")
         if get:
-            udB.set("calc", get + "/")
+            HumandB.set("calc", get + "/")
             return await e.answer(str(get + "/"))
     elif x == "x":
-        get = udB.get("calc")
+        get = HumandB.get("calc")
         if get:
-            udB.set("calc", get + "*")
+            HumandB.set("calc", get + "*")
             return await e.answer(str(get + "*"))
     elif x == "=":
-        get = udB.get("calc")
+        get = HumandB.get("calc")
         if get:
             if get.endswith(("*", ".", "/", "-", "+")):
                 get = get[:-1]
@@ -98,15 +98,15 @@ async def _(e):
                 num = float(out)
                 return await e.answer(f"Answer : {num}", cache_time=0, alert=True)
             except BaseException:
-                udB.delete("calc")
+                HumandB.delete("calc")
                 return await e.answer("Error", cache_time=0, alert=True)
         return await e.answer("None")
     else:
-        get = udB.get("calc")
+        get = HumandB.get("calc")
         if get:
-            udB.set("calc", get + x)
+            HumandB.set("calc", get + x)
             return await e.answer(str(get + x))
-        udB.set("calc", x)
+        HumandB.set("calc", x)
         return await e.answer(str(x))
 
 

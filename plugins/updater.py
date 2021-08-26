@@ -17,7 +17,7 @@ from telethon.tl.functions.channels import ExportMessageLinkRequest as GetLink
 from . import *
 
 ULTPIC = "resources/extras/inline.jpg"
-CL = udB.get("INLINE_PIC")
+CL = HumandB.get("INLINE_PIC")
 if CL:
     ULTPIC = CL
 
@@ -29,7 +29,7 @@ async def _(e):
     branch = (Repo.init()).active_branch
     if m:
         x = await asst.send_file(
-            int(udB.get("LOG_CHANNEL")),
+            int(HumandB.get("LOG_CHANNEL")),
             ULTPIC,
             caption="• **Update Available** •",
             force_document=False,
@@ -57,7 +57,7 @@ async def _(e):
 async def updava(event):
     await event.delete()
     await asst.send_file(
-        int(udB.get("LOG_CHANNEL")),
+        int(HumandB.get("LOG_CHANNEL")),
         ULTPIC,
         caption="• **Update Available** •",
         force_document=False,

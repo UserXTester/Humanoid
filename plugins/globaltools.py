@@ -587,7 +587,7 @@ async def list_gengbanned(event):
     users = gbanned_user()
     x = await eor(event, get_string("com_1"))
     msg = ""
-    if not udB.get("GBAN"):
+    if not HumandB.get("GBAN"):
         return await x.edit("`You haven't GBanned anyone!`")
     for i in users:
         try:

@@ -397,7 +397,7 @@ async def _(ult):
     pattern=r"rmbg$",
 )
 async def rmbg(event):
-    RMBG_API = udB.get("RMBG_API")
+    RMBG_API = HumandB.get("RMBG_API")
     xx = await eor(event, get_string("com_1"))
     if not RMBG_API:
         return await xx.edit(

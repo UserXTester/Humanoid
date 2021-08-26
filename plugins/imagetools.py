@@ -111,7 +111,7 @@ async def _(event):
     img = cv2.VideoCapture(image)
     ret, frame = img.read()
     cv2.imwrite("ult.jpg", frame)
-    if udB.get("DEEP_API"):
+    if HumandB.get("DEEP_API"):
         key = Redis("DEEP_API")
     else:
         key = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"

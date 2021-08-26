@@ -71,7 +71,7 @@ async def broadcast_adder(event):
         await event.delete()
         return
     chat_id = event.chat_id
-    if int(chat_id) == int(udB.get("LOG_CHANNEL")):
+    if int(chat_id) == int(HumandB.get("LOG_CHANNEL")):
         return
     if not is_channel_added(chat_id):
         xx = add_channel(chat_id)
@@ -96,7 +96,7 @@ async def broadcast_remover(event):
     x = await eor(event, get_string("com_1"))
     if chat_id == "all":
         await x.edit("`Removing...`")
-        udB.delete("BROADCAST")
+        HumandB.delete("BROADCAST")
         await x.edit("Database cleared.")
         return
     if is_channel_added(chat_id):
@@ -175,7 +175,7 @@ async def forw(event):
         except Exception:
             try:
                 await Humanoid_bot.send_message(
-                    int(udB.get("LOG_CHANNEL")),
+                    int(HumandB.get("LOG_CHANNEL")),
                     f"Error in sending at {channel}.",
                 )
             except Exception as Em:
@@ -187,7 +187,7 @@ async def forw(event):
     await x.edit(f"{sent_count} messages sent with {error_count} errors.")
     if error_count > 0:
         await Humanoid_bot.send_message(
-            int(udB.get("LOG_CHANNEL")), f"{error_count} Errors"
+            int(HumandB.get("LOG_CHANNEL")), f"{error_count} Errors"
         )
 
 
@@ -221,7 +221,7 @@ async def sending(event):
                 except Exception as error:
 
                     await Humanoid_bot.send_message(
-                        int(udB.get("LOG_CHANNEL")),
+                        int(HumandB.get("LOG_CHANNEL")),
                         f"Error in sending at {channel}.\n\n{error}",
                     )
                     error_count += 1
@@ -231,6 +231,6 @@ async def sending(event):
             await x.edit(f"{sent_count} messages sent with {error_count} errors.")
             if error_count > 0:
                 await Humanoid_bot.send_message(
-                    int(udB.get("LOG_CHANNEL")),
+                    int(HumandB.get("LOG_CHANNEL")),
                     f"{error_count} Errors",
                 )

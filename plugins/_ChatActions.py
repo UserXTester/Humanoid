@@ -29,7 +29,7 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
             await Humanoid.send_message(ult.chat_id, file=sticker)
     # force subscribe
     if (
-        udB.get("FORCESUB")
+        HumandB.get("FORCESUB")
         and ((ult.user_joined or ult.user_added))
         and get_forcesetting(ult.chat_id)
     ):

@@ -46,7 +46,7 @@ async def get_var(event):
     if opt == "var":
         c = 0
         # try redis
-        val = udB.get(varname)
+        val = HumandB.get(varname)
         if val is not None:
             c += 1
             return await x.edit(
@@ -66,7 +66,7 @@ async def get_var(event):
     elif opt == "type":
         c = 0
         # try redis
-        val = udB.get(varname)
+        val = HumandB.get(varname)
         if val is not None:
             c += 1
             return await x.edit(f"**Variable** - `{varname}`\n**Type**: Redis Key.")
@@ -80,14 +80,14 @@ async def get_var(event):
             return await eod(x, "Such a var doesn't exist!", time=5)
 
     elif opt == "redis":
-        val = udB.get(varname)
+        val = HumandB.get(varname)
         if val is not None:
             return await x.edit(f"**Key** - `{varname}`\n**Value**: `{val}`")
         else:
             return await eod(x, "No such key!")
 
     elif opt == "keys":
-        keys = sorted(udB.keys())
+        keys = sorted(HumandB.keys())
         msg = ""
         for i in keys:
             if i.isdigit() or i.startswith("-") or i.startswith("GBAN_REASON_"):
