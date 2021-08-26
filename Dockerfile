@@ -15,7 +15,7 @@ WORKDIR /root/TeamHumanoid/
 
 # install main requirements.
 COPY requirements.txt /deploy/
-RUN pip3 install --no-cache-dir -r -U /deploy/requirements.txt
+RUN pip3 install -U --no-cache-dir -r /deploy/requirements.txt
 
 # start the bot
 CMD ["bash", "resources/startup/startup.sh"]
