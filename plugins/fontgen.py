@@ -7,7 +7,7 @@
 """
 
 from resources.extras.fonts import (
-    _default,
+    _defaHuman,
     _double_stroke,
     _monospace,
     _script_royal,
@@ -54,7 +54,7 @@ async def _(e):
 
 def gen_font(text, new_font):
     for q in text:
-        if q in _default:
-            new = new_font[_default.index(q)]
+        if q in _defaHuman:
+            new = new_font[_defaHuman.index(q)]
             text = text.replace(q, new)
     return text

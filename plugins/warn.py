@@ -20,7 +20,7 @@
 •`{i}setwarn <warn count> | <ban/mute/kick>`
    Set Number in warn count for warnings
    After putting " | " mark put action like ban/mute/kick
-   Its Default 3 kick
+   Its DefaHuman 3 kick
    Example : `setwarn 5 | mute`
 
 """

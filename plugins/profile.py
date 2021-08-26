@@ -43,13 +43,13 @@ TMP_DOWNLOAD_DIRECTORY = "resources/downloads/"
 @Humanoid_cmd(
     pattern="setbio ?(.*)",
 )
-async def _(ult):
-    if not ult.out and not is_fullsudo(ult.sender_id):
-        return await eod(ult, "`This Command Is Sudo Restricted.`")
-    ok = await eor(ult, "...")
-    set = ult.pattern_match.group(1)
+async def _(Human):
+    if not Human.out and not is_fullsudo(Human.sender_id):
+        return await eod(Human, "`This Command Is Sudo Restricted.`")
+    ok = await eor(Human, "...")
+    set = Human.pattern_match.group(1)
     try:
-        await ult.client(UpdateProfileRequest(about=set))
+        await Human.client(UpdateProfileRequest(about=set))
         await ok.edit(f"Profile bio changed to\n`{set}`")
     except Exception as ex:
         await ok.edit("Error occured.\n`{}`".format(str(ex)))
@@ -63,17 +63,17 @@ async def _(ult):
 @Humanoid_cmd(
     pattern="setname ?((.|//)*)",
 )
-async def _(ult):
-    if not ult.out and not is_fullsudo(ult.sender_id):
-        return await eod(ult, "`This Command Is Sudo Restricted.`")
-    ok = await eor(ult, "...")
-    names = ult.pattern_match.group(1)
+async def _(Human):
+    if not Human.out and not is_fullsudo(Human.sender_id):
+        return await eod(Human, "`This Command Is Sudo Restricted.`")
+    ok = await eor(Human, "...")
+    names = Human.pattern_match.group(1)
     first_name = names
     last_name = ""
     if "//" in names:
         first_name, last_name = names.split("//", 1)
     try:
-        await ult.client(
+        await Human.client(
             UpdateProfileRequest(
                 first_name=first_name,
                 last_name=last_name,
@@ -92,21 +92,21 @@ async def _(ult):
 @Humanoid_cmd(
     pattern="setpic$",
 )
-async def _(ult):
-    if not ult.out and not is_fullsudo(ult.sender_id):
-        return await eod(ult, "`This Command Is Sudo Restricted.`")
-    if not ult.is_reply:
-        return await eod(ult, "`Reply to a Media..`")
-    reply_message = await ult.get_reply_message()
-    ok = await eor(ult, "...")
+async def _(Human):
+    if not Human.out and not is_fullsudo(Human.sender_id):
+        return await eod(Human, "`This Command Is Sudo Restricted.`")
+    if not Human.is_reply:
+        return await eod(Human, "`Reply to a Media..`")
+    reply_message = await Human.get_reply_message()
+    ok = await eor(Human, "...")
     replfile = await reply_message.download_media()
-    file = await ult.client.upload_file(replfile)
+    file = await Human.client.upload_file(replfile)
     mediain = mediainfo(reply_message.media)
     try:
         if "pic" in mediain:
-            await ult.client(UploadProfilePhotoRequest(file))
+            await Human.client(UploadProfilePhotoRequest(file))
         elif "gif" or "video" in mediain:
-            await ult.client(UploadProfilePhotoRequest(video=file))
+            await Human.client(UploadProfilePhotoRequest(video=file))
         else:
             return await ok.edit("`Invalid MEDIA Type !`")
         await ok.edit("`My Profile Photo has Successfully Changed !`")
@@ -154,16 +154,16 @@ async def remove_profilepic(delpfp):
 
 @Humanoid_cmd(pattern="poto ?(.*)")
 async def gpoto(e):
-    ult = e.pattern_match.group(1)
+    Human = e.pattern_match.group(1)
     a = await eor(e, "`Processing...`")
-    if not ult and e.is_reply:
+    if not Human and e.is_reply:
         gs = await e.get_reply_message()
-        ult = gs.sender_id
-    if not (ult or e.is_reply):
-        ult = e.chat_id
+        Human = gs.sender_id
+    if not (Human or e.is_reply):
+        Human = e.chat_id
     try:
         okla = await e.client.download_profile_photo(
-            ult,
+            Human,
             "profile.jpg",
             download_big=True,
         )

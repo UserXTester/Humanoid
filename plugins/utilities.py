@@ -98,11 +98,11 @@ _copied_msg = {}
 
 
 @Humanoid_cmd(pattern="kickme$")
-async def leave(ult):
-    if not ult.out and not is_fullsudo(e.sender_id):
-        return await eod(ult, "`This Command Is Sudo Restricted.`")
-    await eor(ult, f"`{Humanoid_bot.me.first_name} has left this group, bye!!.`")
-    await ult.client(LeaveChannelRequest(ult.chat_id))
+async def leave(Human):
+    if not Human.out and not is_fullsudo(e.sender_id):
+        return await eod(Human, "`This Command Is Sudo Restricted.`")
+    await eor(Human, f"`{Humanoid_bot.me.first_name} has left this group, bye!!.`")
+    await Human.client(LeaveChannelRequest(Human.chat_id))
 
 
 @Humanoid_cmd(
@@ -133,9 +133,9 @@ async def info(event):
 
 @Humanoid_cmd(pattern="listreserved$", ignore_dualmode=True)
 async def _(event):
-    result = await event.client(GetAdminedPublicChannelsRequest())
+    resHuman = await event.client(GetAdminedPublicChannelsRequest())
     output_str = ""
-    r = result.chats
+    r = resHuman.chats
     for channel_obj in r:
         output_str += f"- {channel_obj.title} @{channel_obj.username} \n"
     if not r:
@@ -363,32 +363,32 @@ async def _(event):
     pattern="invite ?(.*)",
     groups_only=True,
 )
-async def _(ult):
-    xx = await eor(ult, get_string("com_1"))
-    to_add_users = ult.pattern_match.group(1)
-    if not ult.is_channel and ult.is_group:
+async def _(Human):
+    xx = await eor(Human, get_string("com_1"))
+    to_add_users = Human.pattern_match.group(1)
+    if not Human.is_channel and Human.is_group:
         for user_id in to_add_users.split(" "):
             try:
-                await ult.client(
+                await Human.client(
                     AddChatUserRequest(
-                        chat_id=ult.chat_id,
+                        chat_id=Human.chat_id,
                         user_id=user_id,
                         fwd_limit=1000000,
                     ),
                 )
-                await xx.edit(f"Successfully invited `{user_id}` to `{ult.chat_id}`")
+                await xx.edit(f"Successfully invited `{user_id}` to `{Human.chat_id}`")
             except Exception as e:
                 await xx.edit(str(e))
     else:
         for user_id in to_add_users.split(" "):
             try:
-                await ult.client(
+                await Human.client(
                     InviteToChannelRequest(
-                        channel=ult.chat_id,
+                        channel=Human.chat_id,
                         users=[user_id],
                     ),
                 )
-                await xx.edit(f"Successfully invited `{user_id}` to `{ult.chat_id}`")
+                await xx.edit(f"Successfully invited `{user_id}` to `{Human.chat_id}`")
             except Exception as e:
                 await xx.edit(str(e))
 
@@ -418,7 +418,7 @@ async def rmbg(event):
         await xx.delete()
         return
     contentType = out.headers.get("content-type")
-    rmbgp = "ult.png"
+    rmbgp = "Human.png"
     if "image" in contentType:
         with open(rmbgp, "wb") as rmbg:
             rmbg.write(out.content)
@@ -430,16 +430,16 @@ async def rmbg(event):
     zz = Image.open(rmbgp)
     if zz.mode != "RGB":
         zz.convert("RGB")
-    zz.save("ult.webp", "webp")
+    zz.save("Human.webp", "webp")
     await event.client.send_file(
         event.chat_id,
         rmbgp,
         force_document=True,
         reply_to=reply,
     )
-    await event.client.send_file(event.chat_id, "ult.webp", reply_to=reply)
+    await event.client.send_file(event.chat_id, "Human.webp", reply_to=reply)
     os.remove(rmbgp)
-    os.remove("ult.webp")
+    os.remove("Human.webp")
     await xx.delete()
 
 
@@ -511,7 +511,7 @@ async def _(event):
         reply_to_id = event.message.id
     if len(the_real_message) > 4096:
         with io.BytesIO(str.encode(the_real_message)) as out_file:
-            out_file.name = "json-ult.txt"
+            out_file.name = "json-Human.txt"
             await event.client.send_file(
                 event.chat_id,
                 out_file,

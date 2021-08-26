@@ -15,7 +15,7 @@ from git import Repo
 from pyHumanoid.dB.core import *
 from pyHumanoid.misc import owner_and_sudos
 from support import *
-from telethon.tl.types import InputBotInlineResult, InputWebDocument
+from telethon.tl.types import InputBotInlineResHuman, InputWebDocument
 
 from . import *
 
@@ -82,7 +82,7 @@ async def inline_alive(o):
             "https://telegra.ph/file/715c9ce4819248f1106fd.jpg", 0, "image/jpg", []
         )
         RES = [
-            InputBotInlineResult(
+            InputBotInlineResHuman(
                 str(o.id),
                 "photo",
                 send_message=await b._message(
@@ -100,14 +100,14 @@ async def inline_alive(o):
         await o.answer(RES, switch_pm=f"👥 Humanoid PORTAL", switch_pm_param="start")
 
 
-@in_pattern("ultd")
+@in_pattern("Humand")
 @in_owner
 async def inline_handler(event):
     z = []
     for x in LIST.values():
         for y in x:
             z.append(y)
-    result = event.builder.photo(
+    resHuman = event.builder.photo(
         file=_file_to_replace,
         link_preview=False,
         text=get_string("inline_4").format(
@@ -118,7 +118,7 @@ async def inline_handler(event):
         ),
         buttons=_main_help_menu,
     )
-    await event.answer([result], gallery=True)
+    await event.answer([resHuman], gallery=True)
 
 
 @in_pattern("haste")
@@ -126,7 +126,7 @@ async def inline_handler(event):
 async def _(event):
     ok = event.text.split(" ")[1]
     link = "https://hastebin.com/"
-    result = event.builder.article(
+    resHuman = event.builder.article(
         title="Paste",
         text="Pᴀsᴛᴇᴅ Tᴏ Hᴀsᴛᴇʙɪɴ!",
         buttons=[
@@ -136,7 +136,7 @@ async def _(event):
             ],
         ],
     )
-    await event.answer([result])
+    await event.answer([resHuman])
 
 
 @callback("ownr")
@@ -311,8 +311,8 @@ async def addon(event):
 
 @callback("rstrt")
 @owner
-async def rrst(ult):
-    await restart(ult)
+async def rrst(Human):
+    await restart(Human)
 
 
 @callback(
@@ -529,9 +529,9 @@ def page_num(page_number, loaded_plugins, prefix, type):
     number_of_cols = 2
     emoji = Redis("EMOJI_IN_HELP")
     if emoji:
-        multi = emoji
+        mHumani = emoji
     else:
-        multi = "✘"
+        mHumani = "✘"
     helpable_plugins = []
     global upage
     upage = page_number
@@ -541,9 +541,9 @@ def page_num(page_number, loaded_plugins, prefix, type):
     modules = [
         Button.inline(
             "{} {} {}".format(
-                multi,
+                mHumani,
                 x,
-                multi,
+                mHumani,
             ),
             data=f"{type}_plugin_{x}",
         )

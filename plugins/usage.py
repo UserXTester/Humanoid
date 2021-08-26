@@ -100,15 +100,15 @@ def heroku_usage():
             True,
             f"**ERROR**\n`{r.reason}`",
         )
-    result = r.json()
-    quota = result["account_quota"]
-    quota_used = result["quota_used"]
+    resHuman = r.json()
+    quota = resHuman["account_quota"]
+    quota_used = resHuman["quota_used"]
     remaining_quota = quota - quota_used
     percentage = math.floor(remaining_quota / quota * 100)
     minutes_remaining = remaining_quota / 60
     hours = math.floor(minutes_remaining / 60)
     minutes = math.floor(minutes_remaining % 60)
-    App = result["apps"]
+    App = resHuman["apps"]
     try:
         App[0]["quota_used"]
     except IndexError:

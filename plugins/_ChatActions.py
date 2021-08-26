@@ -12,45 +12,45 @@ from . import *
 
 
 @Humanoid_bot.on(events.ChatAction())
-async def ChatActionsHandler(ult):  # sourcery no-metrics
+async def ChatActionsHandler(Human):  # sourcery no-metrics
     # clean chat actions
-    if is_clean_added(ult.chat_id):
+    if is_clean_added(Human.chat_id):
         try:
-            await ult.delete()
+            await Human.delete()
         except BaseException:
             pass
 
     # thank members
-    if must_thank(ult.chat_id):
-        chat_count = len(await ult.client.get_participants(await ult.get_chat()))
+    if must_thank(Human.chat_id):
+        chat_count = len(await Human.client.get_participants(await Human.get_chat()))
         if chat_count % 100 == 0:
             stik_id = chat_count / 100 - 1
             sticker = stickers[stik_id]
-            await Humanoid.send_message(ult.chat_id, file=sticker)
+            await Humanoid.send_message(Human.chat_id, file=sticker)
     # force subscribe
     if (
         HumandB.get("FORCESUB")
-        and ((ult.user_joined or ult.user_added))
-        and get_forcesetting(ult.chat_id)
+        and ((Human.user_joined or Human.user_added))
+        and get_forcesetting(Human.chat_id)
     ):
-        user = await ult.get_user()
+        user = await Human.get_user()
         if not user.bot:
-            joinchat = get_forcesetting(ult.chat_id)
+            joinchat = get_forcesetting(Human.chat_id)
             try:
                 await Humanoid_bot(GetParticipantRequest(int(joinchat), user.id))
             except UserNotParticipantError:
                 await Humanoid_bot.edit_permissions(
-                    ult.chat_id, user.id, send_messages=False
+                    Human.chat_id, user.id, send_messages=False
                 )
                 res = await Humanoid_bot.inline_query(
                     asst.me.username, f"fsub {user.id}_{joinchat}"
                 )
-                await res[0].click(ult.chat_id, reply_to=ult.action_message.id)
+                await res[0].click(Human.chat_id, reply_to=Human.action_message.id)
 
     # gban checks
-    if ult.user_joined and ult.added_by:
-        user = await ult.get_user()
-        chat = await ult.get_chat()
+    if Human.user_joined and Human.added_by:
+        user = await Human.get_user()
+        chat = await Human.get_chat()
         if is_gbanned(str(user.id)) and chat.admin_rights:
             try:
                 await Humanoid_bot.edit_permissions(
@@ -63,16 +63,16 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
                 if reason is not None:
                     gban_watch += f"**Reason**: {reason}\n\n"
                 gban_watch += f"`User Banned.`"
-                await ult.reply(gban_watch)
+                await Human.reply(gban_watch)
             except BaseException:
                 pass
 
         # greetings
-        if get_welcome(ult.chat_id):
-            user = await ult.get_user()
-            chat = await ult.get_chat()
+        if get_welcome(Human.chat_id):
+            user = await Human.get_user()
+            chat = await Human.get_chat()
             title = chat.title or "this chat"
-            pp = await ult.client.get_participants(chat)
+            pp = await Human.client.get_participants(chat)
             count = len(pp)
             mention = f"[{get_display_name(user)}](tg://user?id={user.id})"
             name = user.first_name
@@ -84,7 +84,7 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
             med = wel["media"]
             userid = user.id
             if msgg and not is_gbanned(str(user.id)):
-                send = await ult.reply(
+                send = await Human.reply(
                     msgg.format(
                         mention=mention,
                         group=title,
@@ -99,12 +99,12 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
                 await asyncio.sleep(150)
                 await send.delete()
             elif not is_gbanned(str(user.id)):
-                await ult.reply(file=med)
-    if (ult.user_left or ult.user_kicked) and get_goodbye(ult.chat_id):
-        user = await ult.get_user()
-        chat = await ult.get_chat()
+                await Human.reply(file=med)
+    if (Human.user_left or Human.user_kicked) and get_goodbye(Human.chat_id):
+        user = await Human.get_user()
+        chat = await Human.get_chat()
         title = chat.title or "this chat"
-        pp = await ult.client.get_participants(chat)
+        pp = await Human.client.get_participants(chat)
         count = len(pp)
         mention = f"[{get_display_name(user)}](tg://user?id={user.id})"
         name = user.first_name
@@ -116,7 +116,7 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
         med = wel["media"]
         userid = user.id
         if msgg:
-            send = await ult.reply(
+            send = await Human.reply(
                 msgg.format(
                     mention=mention,
                     group=title,
@@ -131,7 +131,7 @@ async def ChatActionsHandler(ult):  # sourcery no-metrics
             await asyncio.sleep(150)
             await send.delete()
         else:
-            await ult.reply(file=med)
+            await Human.reply(file=med)
 
 
 @Humanoid_bot.on(events.NewMessage(incoming=True))

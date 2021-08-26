@@ -264,9 +264,9 @@ if sett == "True":
                             caption=message_,
                         )
                     else:
-                        results = await Humanoid.inline_query(my_bot, f"ip_{user.id}")
+                        resHumans = await Humanoid.inline_query(my_bot, f"ip_{user.id}")
                         try:
-                            await results[0].click(
+                            await resHumans[0].click(
                                 user.id, reply_to=event.id, hide_via=True
                             )
                         except Exception as e:
@@ -293,10 +293,10 @@ if sett == "True":
                         )
                     else:
                         try:
-                            results = await Humanoid.inline_query(
+                            resHumans = await Humanoid.inline_query(
                                 my_bot, f"ip_{user.id}"
                             )
-                            await results[0].click(
+                            await resHumans[0].click(
                                 user.id, reply_to=event.id, hide_via=True
                             )
                         except Exception as e:
@@ -324,8 +324,8 @@ if sett == "True":
                     )
                 else:
                     try:
-                        results = await Humanoid.inline_query(my_bot, f"ip_{user.id}")
-                        await results[0].click(
+                        resHumans = await Humanoid.inline_query(my_bot, f"ip_{user.id}")
+                        await resHumans[0].click(
                             user.id, reply_to=event.id, hide_via=True
                         )
                     except Exception as e:

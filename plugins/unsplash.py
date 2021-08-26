@@ -20,20 +20,20 @@ from . import *
 
 
 @Humanoid_cmd(pattern="unsplash ?(.*)")
-async def searchunsl(ult):
-    match = ult.pattern_match.group(1)
+async def searchunsl(Human):
+    match = Human.pattern_match.group(1)
     if not match:
-        return await eor(ult, "Give me Something to Search")
+        return await eor(Human, "Give me Something to Search")
     if ";" in match:
         num = int(match.split(";")[1])
         query = match.split(";")[0]
     else:
         num = 5
         query = match
-    tep = await eor(ult, "`Processing... `")
+    tep = await eor(Human, "`Processing... `")
     res = autopicsearch(query)
     if len(res) == 0:
-        return await eod(ult, "No Results Found !")
+        return await eod(Human, "No ResHumans Found !")
     qas = res[:num]
     dir = "resources/downloads"
     CL = []
@@ -47,7 +47,7 @@ async def searchunsl(ult):
         urllib.request.urlretrieve(ft, Hp)
         CL.append(Hp)
         nl += 1
-    await ult.client.send_file(
-        ult.chat_id, CL, caption=f"Uploaded {len(qas)} Images\n", album=True
+    await Human.client.send_file(
+        Human.chat_id, CL, caption=f"Uploaded {len(qas)} Images\n", album=True
     )
     await tep.delete()

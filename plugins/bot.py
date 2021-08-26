@@ -43,7 +43,7 @@ from . import *
 @Humanoid_cmd(
     pattern="alive$",
 )
-async def lol(ult):
+async def lol(Human):
     pic = HumandB.get("ALIVE_PIC")
     uptime = time_formatter((time.time() - start_time) * 1000)
     header = HumandB.get("ALIVE_TEXT") if HumandB.get("ALIVE_TEXT") else "Hey,  I am alive."
@@ -62,20 +62,20 @@ async def lol(ult):
         kk,
     )
     if pic is None:
-        return await eor(ult, als)
+        return await eor(Human, als)
     elif pic is not None and "telegra" in pic:
         try:
-            await ult.reply(als, file=pic, link_preview=False)
-            await ult.delete()
+            await Human.reply(als, file=pic, link_preview=False)
+            await Human.delete()
         except ChatSendMediaForbiddenError:
-            await eor(ult, als, link_preview=False)
+            await eor(Human, als, link_preview=False)
     else:
         try:
-            await ult.reply(file=pic)
-            await ult.reply(als, link_preview=False)
-            await ult.delete()
+            await Human.reply(file=pic)
+            await Human.reply(als, link_preview=False)
+            await Human.delete()
         except ChatSendMediaForbiddenError:
-            await eor(ult, als, link_preview=False)
+            await eor(Human, als, link_preview=False)
 
 
 @Humanoid_bot.on(events.NewMessage(pattern=f"\\{HNDLR}ping$"))
@@ -102,8 +102,8 @@ async def cmds(event):
 @Humanoid_cmd(
     pattern="restart$",
 )
-async def restartbt(ult):
-    ok = await eor(ult, "`Restarting...`")
+async def restartbt(Human):
+    ok = await eor(Human, "`Restarting...`")
     if Var.HEROKU_API:
         await restart(ok)
     else:
@@ -111,10 +111,10 @@ async def restartbt(ult):
 
 
 @Humanoid_cmd(pattern="shutdown$")
-async def shutdownbot(ult):
-    if not ult.out and not is_fullsudo(ult.sender_id):
-        return await eod(ult, "`This Command Is Sudo Restricted.`")
-    await shutdown(ult)
+async def shutdownbot(Human):
+    if not Human.out and not is_fullsudo(Human.sender_id):
+        return await eod(Human, "`This Command Is Sudo Restricted.`")
+    await shutdown(Human)
 
 
 @Humanoid_bot.on(events.NewMessage(pattern=f"\\{HNDLR}logs ?(.*)"))

@@ -15,7 +15,7 @@
 
 """
 from pyHumanoid.functions.all import lucks, unlucks
-from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
+from telethon.tl.functions.messages import EditChatDefaHumanBannedRightsRequest
 
 from . import *
 
@@ -35,7 +35,7 @@ async def lockho(e):
         ml = lucks(mat)
     except BaseException:
         return await eod(e, "`Incorrect Input`")
-    await e.client(EditChatDefaultBannedRightsRequest(e.chat_id, ml))
+    await e.client(EditChatDefaHumanBannedRightsRequest(e.chat_id, ml))
     await eor(e, f"Locked - `{mat}` ! ")
 
 
@@ -54,5 +54,5 @@ async def unlckho(e):
         ml = unlucks(mat)
     except BaseException:
         return await eod(e, "`Incorrect Input`")
-    await e.client(EditChatDefaultBannedRightsRequest(e.chat_id, ml))
+    await e.client(EditChatDefaHumanBannedRightsRequest(e.chat_id, ml))
     await eor(e, f"Unlocked - `{mat}` ! ")

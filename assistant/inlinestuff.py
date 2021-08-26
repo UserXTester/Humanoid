@@ -27,7 +27,7 @@ ofox = "https://telegra.ph/file/231f0049fcd722824f13b.jpg"
 gugirl = "https://telegra.ph/file/0df54ae4541abca96aa11.jpg"
 yeah = "https://telegra.ph/file/e3c67885e16a194937516.jpg"
 ps = "https://telegra.ph/file/de0b8d9c858c62fae3b6e.jpg"
-ultpic = "https://telegra.ph/file/715c9ce4819248f1106fd.jpg"
+Humanpic = "https://telegra.ph/file/715c9ce4819248f1106fd.jpg"
 
 ofox_api = OrangeFoxAPI()
 
@@ -152,7 +152,7 @@ async def repo(e):
         await e.builder.article(
             title="Humanoid Userbot",
             description="Userbot | Telethon",
-            thumb=wb(ultpic, 0, "image/jpeg", []),
+            thumb=wb(Humanpic, 0, "image/jpeg", []),
             text="• **Humanoid USERBOT** •",
             buttons=SUP_BUTTONS,
         ),
@@ -180,13 +180,13 @@ async def gsearch(q_event):
         page = 1
     search_args = (str(match), int(page), bool(cache))
     gsearch = GoogleSearch()
-    gresults = await gsearch.async_search(*search_args)
+    gresHumans = await gsearch.async_search(*search_args)
     msg = ""
-    for i in range(len(gresults["links"])):
+    for i in range(len(gresHumans["links"])):
         try:
-            title = gresults["titles"][i]
-            link = gresults["links"][i]
-            desc = gresults["descriptions"][i]
+            title = gresHumans["titles"][i]
+            link = gresHumans["links"][i]
+            desc = gresHumans["descriptions"][i]
             msg += f"👉[{title}]({link})\n`{desc}`\n\n"
             searcher.append(
                 await q_event.builder.article(
@@ -237,13 +237,13 @@ async def yahoosearch(q_event):
         page = 1
     search_args = (str(match), int(page), bool(cache))
     gsearch = YahooSearch()
-    gresults = await gsearch.async_search(*search_args)
+    gresHumans = await gsearch.async_search(*search_args)
     msg = ""
-    for i in range(len(gresults["links"])):
+    for i in range(len(gresHumans["links"])):
         try:
-            title = gresults["titles"][i]
-            link = gresults["links"][i]
-            desc = gresults["descriptions"][i]
+            title = gresHumans["titles"][i]
+            link = gresHumans["links"][i]
+            desc = gresHumans["descriptions"][i]
             msg += f"👉[{title}]({link})\n`{desc}`\n\n"
             searcher.append(
                 await q_event.builder.article(
@@ -391,7 +391,7 @@ async def clip(e):
     Alink = bs.find_all("a", "link")
     if len(out) == 0:
         return await e.answer(
-            [], switch_pm="No Results Found !", switch_pm_param="start"
+            [], switch_pm="No ResHumans Found !", switch_pm_param="start"
         )
     buil = e.builder
     dont_take = [

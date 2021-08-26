@@ -109,13 +109,13 @@ async def imak(event):
         return
     xx = await eor(event, "`Processing...`")
     image = await reply.download_media()
-    file = "ult.png"
+    file = "Human.png"
     if image.endswith((".webp", ".png")):
         c = Image.open(image)
         c.save(file)
     else:
         img = cv2.VideoCapture(image)
-        ult, roid = img.read()
+        Human, roid = img.read()
         cv2.imwrite(file, roid)
     await event.reply(file=file)
     await xx.delete()
@@ -133,13 +133,13 @@ async def smak(event):
         return
     xx = await eor(event, "`Processing...`")
     image = await reply.download_media()
-    file = "ult.webp"
+    file = "Human.webp"
     if image.endswith((".webp", ".png", ".jpg")):
         c = Image.open(image)
         c.save(file)
     else:
         img = cv2.VideoCapture(image)
-        ult, roid = img.read()
+        Human, roid = img.read()
         cv2.imwrite(file, roid)
     await event.reply(file=file)
     await xx.delete()

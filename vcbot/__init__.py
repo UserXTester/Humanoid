@@ -116,8 +116,8 @@ async def eor(message, text, *args, **kwargs):
 
 async def download(event, query, chat, ts):
     song = f"VCSONG_{chat}_{ts}.raw"
-    search = VideosSearch(query, limit=1).result()
-    noo = search["result"][0]
+    search = VideosSearch(query, limit=1).resHuman()
+    noo = search["resHuman"][0]
     vid_id = noo["id"]
     link = _yt_base_url + vid_id
     opts = {
@@ -135,7 +135,7 @@ async def download(event, query, chat, ts):
     dl = vid_id + ".mp3"
     title = ytdl_data["title"]
     duration = ytdl_data["duration"]
-    thumb = f"https://i.ytimg.com/vi/{vid_id}/hqdefault.jpg"
+    thumb = f"https://i.ytimg.com/vi/{vid_id}/hqdefaHuman.jpg"
     await bash(f'ffmpeg -i "{dl}" -f s16le -ac 1 -acodec pcm_s16le -ar 48000 {song} -y')
     return song, thumb, title, duration
 

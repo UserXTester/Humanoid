@@ -64,9 +64,9 @@ async def autopic(e):
 
 
 @Humanoid_cmd(pattern="stoppic$")
-async def stoppo(ult):
+async def stoppo(Human):
     gt = HumandB.get("AUTOPIC")
     if not gt == "True":
-        return await eod(ult, "AUTOPIC was not in used !!")
+        return await eod(Human, "AUTOPIC was not in used !!")
     HumandB.set("AUTOPIC", "None")
-    await eod(ult, "AUTOPIC Stopped !!")
+    await eod(Human, "AUTOPIC Stopped !!")

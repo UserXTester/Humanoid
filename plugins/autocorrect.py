@@ -25,7 +25,7 @@ tr = Translator()
 @Humanoid_cmd(pattern="autocorrect")
 async def acc(e):
     if not is_fullsudo(e.sender_id):
-        return await eod(ult, "`This Command Is Sudo Restricted.`")
+        return await eod(Human, "`This Command Is Sudo Restricted.`")
     if Redis("AUTOCORRECT") != "True":
         HumandB.set("AUTOCORRECT", "True")
         await eod(e, "AUTOCORRECT Feature On")
@@ -48,7 +48,7 @@ async def gramme(event):
         return
     xx = GingerIt()
     x = xx.parse(t)
-    res = x["result"]
+    res = x["resHuman"]
     try:
         await event.edit(res)
     except BaseException:

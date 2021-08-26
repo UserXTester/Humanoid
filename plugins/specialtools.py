@@ -63,14 +63,14 @@ async def adaudroid(event):
         await eor(event, "`Reply To Gif/Video In which u want to add audio.`")
         return
     xx = await eor(event, "`processing...`")
-    ultt = await ureply.download_media()
+    Humant = await ureply.download_media()
     ls = os.listdir("resources/extras")
     z = "ul.mp3"
     x = "resources/extras/ul.mp3"
     if z not in ls:
         await xx.edit("`First reply an audio with .aw`")
         return
-    video = m.VideoFileClip(ultt)
+    video = m.VideoFileClip(Humant)
     audio = m.AudioFileClip(x)
     out = video.set_audio(audio)
     out.write_videofile("ok.mp4", fps=30)
@@ -82,7 +82,7 @@ async def adaudroid(event):
     )
     os.remove("ok.mp4")
     os.remove(x)
-    os.remove(ultt)
+    os.remove(Humant)
     await xx.delete()
 
 

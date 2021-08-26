@@ -31,14 +31,14 @@ from . import *
 @Humanoid_cmd(
     pattern="setredis ?(.*)",
 )
-async def _(ult):
-    if not ult.out:
-        if not is_fullsudo(ult.sender_id):
-            return await eod(ult, "`This Command Is Sudo Restricted.`")
-    ok = await eor(ult, "`...`")
+async def _(Human):
+    if not Human.out:
+        if not is_fullsudo(Human.sender_id):
+            return await eod(Human, "`This Command Is Sudo Restricted.`")
+    ok = await eor(Human, "`...`")
     try:
-        delim = " " if re.search("[|]", ult.pattern_match.group(1)) is None else " | "
-        data = ult.pattern_match.group(1).split(delim, maxsplit=1)
+        delim = " " if re.search("[|]", Human.pattern_match.group(1)) is None else " | "
+        data = Human.pattern_match.group(1).split(delim, maxsplit=1)
         HumandB.set(data[0], data[1])
         redisdata = Redis(data[0])
         await ok.edit(
@@ -54,13 +54,13 @@ async def _(ult):
 @Humanoid_cmd(
     pattern="delredis ?(.*)",
 )
-async def _(ult):
-    if not ult.out:
-        if not is_fullsudo(ult.sender_id):
-            return await eod(ult, "`This Command Is Sudo Restricted.`")
-    ok = await eor(ult, "`Deleting data from Redis ...`")
+async def _(Human):
+    if not Human.out:
+        if not is_fullsudo(Human.sender_id):
+            return await eod(Human, "`This Command Is Sudo Restricted.`")
+    ok = await eor(Human, "`Deleting data from Redis ...`")
     try:
-        key = ult.pattern_match.group(1)
+        key = Human.pattern_match.group(1)
         k = HumandB.delete(key)
         if k == 0:
             return await ok.edit("`No Such Key.`")
@@ -72,13 +72,13 @@ async def _(ult):
 @Humanoid_cmd(
     pattern="renredis ?(.*)",
 )
-async def _(ult):
-    if not ult.out:
-        if not is_fullsudo(ult.sender_id):
-            return await eod(ult, "`This Command Is Sudo Restricted.`")
-    ok = await eor(ult, "`...`")
-    delim = " " if re.search("[|]", ult.pattern_match.group(1)) is None else " | "
-    data = ult.pattern_match.group(1).split(delim)
+async def _(Human):
+    if not Human.out:
+        if not is_fullsudo(Human.sender_id):
+            return await eod(Human, "`This Command Is Sudo Restricted.`")
+    ok = await eor(Human, "`...`")
+    delim = " " if re.search("[|]", Human.pattern_match.group(1)) is None else " | "
+    data = Human.pattern_match.group(1).split(delim)
     if Redis(data[0]):
         try:
             HumandB.rename(data[0], data[1])

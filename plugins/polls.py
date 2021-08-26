@@ -12,7 +12,7 @@
 
 • `{i}poll <question> ; <option> ; <option> | <type>`
     Get the poll specified with desired type!
-    type should be any of  `public`,  `multiple` or `quiz`
+    type should be any of  `public`,  `mHumaniple` or `quiz`
 
 • `{i}poll <question> ; <option> ; <option> | quiz_<answerno>`
     Get the quiz poll where answerno is the number of option which is correct
@@ -45,13 +45,13 @@ async def uri_poll(e):
         if "_" in ptype:
             karzo = [str(int(ptype.split("_")[1]) - 1).encode()]
             ptype = ptype.split("_")[0]
-        if ptype not in ["public", "quiz", "multiple"]:
+        if ptype not in ["public", "quiz", "mHumaniple"]:
             return await eod(e, "`Invalid Poll Type...`")
         if ptype == "public":
             publ = True
         if ptype == "quiz":
             quizo = True
-        if ptype == "multiple":
+        if ptype == "mHumaniple":
             mpp = True
     if len(option) <= 1:
         return await eod(e, "`Options Should be More than 1..`")
@@ -62,7 +62,7 @@ async def uri_poll(e):
     await e.client.send_file(
         e.chat_id,
         InputMediaPoll(
-            Poll(20, ques, OUT, multiple_choice=mpp, public_voters=publ, quiz=quizo),
+            Poll(20, ques, OUT, mHumaniple_choice=mpp, public_voters=publ, quiz=quizo),
             correct_answers=karzo,
         ),
     )

@@ -32,24 +32,24 @@ from . import *
 
 
 @Humanoid_cmd(pattern="setgpic$", groups_only=True, admins_only=True)
-async def _(ult):
-    if not ult.is_reply:
-        return await eod(ult, "`Reply to a Media..`")
-    reply_message = await ult.get_reply_message()
+async def _(Human):
+    if not Human.is_reply:
+        return await eod(Human, "`Reply to a Media..`")
+    reply_message = await Human.get_reply_message()
     try:
         replfile = await reply_message.download_media()
     except AttributeError:
-        return await eor(ult, "Reply to a Photo..")
-    file = await ult.client.upload_file(replfile)
+        return await eor(Human, "Reply to a Photo..")
+    file = await Human.client.upload_file(replfile)
     mediain = mediainfo(reply_message.media)
     try:
         if "pic" in mediain:
-            await ult.client(EditPhotoRequest(ult.chat_id, file))
+            await Human.client(EditPhotoRequest(Human.chat_id, file))
         else:
-            return await eod(ult, "`Invalid MEDIA Type !`")
-        await eod(ult, "`Group Photo has Successfully Changed !`")
+            return await eod(Human, "`Invalid MEDIA Type !`")
+        await eod(Human, "`Group Photo has Successfully Changed !`")
     except Exception as ex:
-        await eod(ult, "Error occured.\n`{}`".format(str(ex)))
+        await eod(Human, "Error occured.\n`{}`".format(str(ex)))
     os.remove(replfile)
 
 

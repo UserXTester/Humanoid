@@ -238,8 +238,8 @@ async def hehe(args):
             xy = await message.download_media()
             y = cv2.VideoCapture(xy)
             heh, lol = y.read()
-            cv2.imwrite("ult.webp", lol)
-            photo = "ult.webp"
+            cv2.imwrite("Human.webp", lol)
+            photo = "Human.webp"
         elif "tgsticker" in message.media.document.mime_type:
             await xx.edit(f"`{random.choice(KANGING_STR)}`")
             await Humanoid_bot.download_file(
@@ -275,7 +275,7 @@ async def hehe(args):
             else:
                 emoji = splat[1]
 
-        packname = f"ult_{user.id}_{pack}"
+        packname = f"Human_{user.id}_{pack}"
         packnick = f"@{user.username}'s Pack {pack}"
         cmd = "/newpack"
         file = io.BytesIO()
@@ -306,7 +306,7 @@ async def hehe(args):
                 x = await conv.get_response()
                 while "120" in x.text:
                     pack += 1
-                    packname = f"ult_{user.id}_{pack}"
+                    packname = f"Human_{user.id}_{pack}"
                     packnick = f"@{user.username}'s Pack {pack}"
                     await xx.edit(
                         "`Switching to Pack "
@@ -423,17 +423,17 @@ async def hehe(args):
 @Humanoid_cmd(
     pattern="round$",
 )
-async def ultdround(event):
+async def Humandround(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`Processing...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -442,14 +442,14 @@ async def ultdround(event):
         stdout, stderr = await process.communicate()
         stderr.decode().strip()
         stdout.decode().strip()
-    elif ultt.endswith((".gif", ".mp4", ".mkv")):
+    elif Humant.endswith((".gif", ".mp4", ".mkv")):
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
     else:
-        file = ultt
+        file = Humant
     img = Image.open(file).convert("RGB")
     npImage = np.array(img)
     h, w = img.size
@@ -458,30 +458,30 @@ async def ultdround(event):
     draw.pieslice([0, 0, h, w], 0, 360, fill=255)
     npAlpha = np.array(alpha)
     npImage = np.dstack((npImage, npAlpha))
-    Image.fromarray(npImage).save("ult.webp")
+    Image.fromarray(npImage).save("Human.webp")
     await event.client.send_file(
         event.chat_id,
-        "ult.webp",
+        "Human.webp",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
     os.remove(file)
-    os.remove("ult.webp")
+    os.remove("Human.webp")
 
 
 @Humanoid_cmd(
     pattern="destroy$",
 )
-async def ultdestroy(event):
-    ult = await event.get_reply_message()
+async def Humandestroy(event):
+    Human = await event.get_reply_message()
     if not event.is_reply:
         return await eor(event, "`Reply to Animated Sticker Only...`")
     if not (
-        ult.media and ult.media.document and "tgsticker" in ult.media.document.mime_type
+        Human.media and Human.media.document and "tgsticker" in Human.media.document.mime_type
     ):
         return await eor(event, "`Reply to Animated Sticker only`")
-    await event.client.download_media(ult, "Humanoid.tgs")
+    await event.client.download_media(Human, "Humanoid.tgs")
     xx = await eor(event, "`Processing...`")
     os.system("lottie_convert.py Humanoid.tgs json.json")
     json = open("json.json")
@@ -517,7 +517,7 @@ async def ultdestroy(event):
 @Humanoid_cmd(
     pattern="tiny$",
 )
-async def ultiny(event):
+async def Humaniny(event):
     reply = await event.get_reply_message()
     if not (reply and (reply.media)):
         await eor(event, "`Reply To Media`")
@@ -526,15 +526,15 @@ async def ultiny(event):
     ik = await Humanoid_bot.download_media(reply)
     im1 = Image.open("resources/extras/Humanoid_blank.png")
     if ik.endswith(".tgs"):
-        await event.client.download_media(reply, "ult.tgs")
-        os.system("lottie_convert.py ult.tgs json.json")
+        await event.client.download_media(reply, "Human.tgs")
+        os.system("lottie_convert.py Human.tgs json.json")
         json = open("json.json")
         jsn = json.read()
         json.close()
         jsn = jsn.replace("512", "2000")
         open("json.json", "w").write(jsn)
-        os.system("lottie_convert.py json.json ult.tgs")
-        file = "ult.tgs"
+        os.system("lottie_convert.py json.json Human.tgs")
+        file = "Human.tgs"
         os.remove("json.json")
     elif ik.endswith((".gif", ".mp4")):
         iik = cv2.VideoCapture(ik)

@@ -14,16 +14,16 @@ from . import *
 @owner
 async def setlang(event):
     languages = get_languages()
-    tultd = [
+    tHumand = [
         Button.inline(
-            f"{languages[ult]['natively']} [{ult.lower()}]",
-            data=f"set_{ult}",
+            f"{languages[Human]['natively']} [{Human.lower()}]",
+            data=f"set_{Human}",
         )
-        for ult in languages
+        for Human in languages
     ]
-    buttons = list(zip(tultd[::2], tultd[1::2]))
-    if len(tultd) % 2 == 1:
-        buttons.append((tultd[-1],))
+    buttons = list(zip(tHumand[::2], tHumand[1::2]))
+    if len(tHumand) % 2 == 1:
+        buttons.append((tHumand[-1],))
     buttons.append([Button.inline("« Back", data="mainmenu")])
     await event.edit("List Of Available Languages.", buttons=buttons)
 

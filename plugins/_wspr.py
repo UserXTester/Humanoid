@@ -41,7 +41,7 @@ async def _(e):
         put = e.pattern_match.group(1)
     if put:
         try:
-            results = await e.client.inline_query(asst.me.username, f"msg {put}")
+            resHumans = await e.client.inline_query(asst.me.username, f"msg {put}")
         except rep:
             return await eor(
                 e,
@@ -49,7 +49,7 @@ async def _(e):
             )
         except dis:
             return await eor(e, get_string("help_3"))
-        await results[0].click(e.chat_id, reply_to=e.reply_to_msg_id, hide_via=True)
+        await resHumans[0].click(e.chat_id, reply_to=e.reply_to_msg_id, hide_via=True)
         await e.delete()
     else:
         await eor(e, "Add some id or username too")

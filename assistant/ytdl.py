@@ -40,20 +40,20 @@ async def _(event):
         )
         await event.answer([fuk])
         return
-    results = []
+    resHumans = []
     search = VideosSearch(string, limit=10)
-    nub = search.result()
-    nibba = nub["result"]
+    nub = search.resHuman()
+    nibba = nub["resHuman"]
     for v in nibba:
         ids = v["id"]
         link = _yt_base_url + ids
         title = v["title"]
         duration = v["duration"]
-        thumb = f"https://i.ytimg.com/vi/{ids}/hqdefault.jpg"
+        thumb = f"https://i.ytimg.com/vi/{ids}/hqdefaHuman.jpg"
         text = f"**•Tɪᴛʟᴇ•** `{title}`\n\n**••[Lɪɴᴋ]({link})••**\n\n**••Dᴜʀᴀᴛɪᴏɴ••** `{duration}`\n\n\n"
         desc = f"Title : {title}\nDuration : {duration}"
         file = wb(thumb, 0, "image/jpeg", [])
-        results.append(
+        resHumans.append(
             await event.builder.article(
                 type="photo",
                 title=title,
@@ -82,7 +82,7 @@ async def _(event):
                 ],
             ),
         )
-    await event.answer(results[:50])
+    await event.answer(resHumans[:50])
 
 
 @callback(
@@ -133,7 +133,7 @@ async def _(event):
         title = ytdl_data["title"]
         artist = ytdl_data["uploader"]
         views = numerize.numerize(ytdl_data["view_count"])
-        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefault.jpg", f"{title}.jpg")
+        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefaHuman.jpg", f"{title}.jpg")
         thumb = f"{title}.jpg"
         duration = ytdl_data["duration"]
         os.rename(f"{ytdl_data['id']}.mp3", f"{title}.mp3")
@@ -164,7 +164,7 @@ async def _(event):
         title = ytdl_data["title"]
         artist = ytdl_data["uploader"]
         views = numerize.numerize(ytdl_data["view_count"])
-        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefault.jpg", f"{title}.jpg")
+        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefaHuman.jpg", f"{title}.jpg")
         thumb = f"{title}.jpg"
         duration = ytdl_data["duration"]
         try:

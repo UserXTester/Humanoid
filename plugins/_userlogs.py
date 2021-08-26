@@ -126,7 +126,7 @@ async def when_asst_added_to_chat(event):
 
 
 @Humanoid.on(events.ChatAction)
-async def when_ultd_added_to_chat(event):
+async def when_Humand_added_to_chat(event):
     if event.user_added:
         user = await event.get_user()
         chat = await event.get_chat()

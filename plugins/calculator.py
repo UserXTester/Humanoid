@@ -18,8 +18,8 @@ from . import *
 @Humanoid_cmd(pattern="calc")
 async def icalc(e):
     HumandB.delete("calc")
-    results = await e.client.inline_query(asst.me.username, "calc")
-    await results[0].click(e.chat_id, silent=True, hide_via=True)
+    resHumans = await e.client.inline_query(asst.me.username, "calc")
+    await resHumans[0].click(e.chat_id, silent=True, hide_via=True)
     await e.delete()
 
 
@@ -48,8 +48,8 @@ async def _(e):
         ".",
         "÷",
     ]
-    tultd = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
-    lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
+    tHumand = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
+    lst = list(zip(tHumand[::4], tHumand[1::4], tHumand[2::4], tHumand[3::4]))
     lst.append([Button.inline("=", data="calc=")])
     calc = e.builder.article("Calc", text="• Humanoid Inline Calculator •", buttons=lst)
     await e.answer([calc])
@@ -135,7 +135,7 @@ async def _(e):
         ".",
         "÷",
     ]
-    tultd = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
-    lst = list(zip(tultd[::4], tultd[1::4], tultd[2::4], tultd[3::4]))
+    tHumand = [Button.inline(f"{x}", data=f"calc{x}") for x in m]
+    lst = list(zip(tHumand[::4], tHumand[1::4], tHumand[2::4], tHumand[3::4]))
     lst.append([Button.inline("=", data="calc=")])
     await e.edit("Noice Inline Calculator", buttons=lst)

@@ -47,4 +47,4 @@ async def mobs(e):
             await bt.delete()
     except Exception as a:
         print(a)
-        await eor(e, "No Results Found")
+        await eor(e, "No ResHumans Found")

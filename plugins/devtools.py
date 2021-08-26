@@ -80,8 +80,8 @@ async def _(event):
     if not stderr and not stdout:
         OUT += f"**• OUTPUT:**\n`Success`"
     if len(OUT) > 4096:
-        ultd = OUT.replace("`", "").replace("*", "").replace("_", "")
-        with io.BytesIO(str.encode(ultd)) as out_file:
+        Humand = OUT.replace("`", "").replace("*", "").replace("_", "")
+        with io.BytesIO(str.encode(Humand)) as out_file:
             out_file.name = "bash.txt"
             await event.client.send_file(
                 event.chat_id,
@@ -152,8 +152,8 @@ async def _(event):
         )
     )
     if len(final_output) > 4096:
-        ultd = final_output.replace("`", "").replace("*", "").replace("_", "")
-        with io.BytesIO(str.encode(ultd)) as out_file:
+        Humand = final_output.replace("`", "").replace("*", "").replace("_", "")
+        with io.BytesIO(str.encode(Humand)) as out_file:
             out_file.name = "eval.txt"
             await event.client.send_file(
                 event.chat_id,

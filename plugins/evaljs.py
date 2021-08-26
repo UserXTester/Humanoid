@@ -31,22 +31,22 @@ async def evalJs(
     scriptFile.write(str(command))
     scriptFile.close()
     os.system(f"node ./src/ecmaHelper/eval.d.js")
-    if os.path.exists("./src/ecmaHelper/evalJs.result.d.txt"):
+    if os.path.exists("./src/ecmaHelper/evalJs.resHuman.d.txt"):
         await event.client.send_file(
             event.chat_id,
-            "./src/ecmaHelper/evalJs.result.d.txt",
+            "./src/ecmaHelper/evalJs.resHuman.d.txt",
             force_document=True,
-            caption=f"**☞ evalJS\n\n• Command:**\n`{command}` \n\n**• TimeTaken:**\n`{time.time() - startTime:.2f}s` \n\n**• Result:**\n`[Info]: Uploaded File For Better Visualisation Of Indents.`",
+            caption=f"**☞ evalJS\n\n• Command:**\n`{command}` \n\n**• TimeTaken:**\n`{time.time() - startTime:.2f}s` \n\n**• ResHuman:**\n`[Info]: Uploaded File For Better Visualisation Of Indents.`",
         )
     else:
         await event.client.send_file(
             event.chat_id,
-            "./src/ecmaHelper/evalJs.result.d.txt",
+            "./src/ecmaHelper/evalJs.resHuman.d.txt",
             force_document=True,
-            caption=f"**☞ evalJS\n\n• Command:**\n`{command}` \n\n**• TimeTaken:**\n`{time.time() - startTime:.2f}` \n\n**• Result:**\n`[Warning]: Unexpected Error Occured !`",
+            caption=f"**☞ evalJS\n\n• Command:**\n`{command}` \n\n**• TimeTaken:**\n`{time.time() - startTime:.2f}` \n\n**• ResHuman:**\n`[Warning]: Unexpected Error Occured !`",
         )
     await event.delete()
-    file = open("./src/ecmaHelper/evalJs.result.d.txt", encoding="utf-8", mode="w")
+    file = open("./src/ecmaHelper/evalJs.resHuman.d.txt", encoding="utf-8", mode="w")
     file.write("'use-strict';\n")
     file.close()
 

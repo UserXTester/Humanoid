@@ -826,8 +826,8 @@ async def name(event):
 @owner
 async def name(event):
     m = range(1, 10)
-    tultd = [Button.inline(f"{x}", data=f"wrns_{x}") for x in m]
-    lst = list(zip(tultd[::3], tultd[1::3], tultd[2::3]))
+    tHumand = [Button.inline(f"{x}", data=f"wrns_{x}") for x in m]
+    lst = list(zip(tHumand[::3], tHumand[1::3], tHumand[2::3]))
     lst.append([Button.inline("« Bᴀᴄᴋ", data="pmcstm")])
     await event.edit(
         "Select the number of warnings for a user before getting blocked in PMs.",

@@ -11,7 +11,7 @@
     For doing google search.
 
 • `{i}img <query>`
-  `{i}img <query> ; <no of results>`
+  `{i}img <query> ; <no of resHumans>`
     For doing Images search.
 
 • `{i}reverse <query>`
@@ -25,7 +25,7 @@ from bs4 import BeautifulSoup as bs
 from PIL import Image
 from pyHumanoid.functions.google_image import googleimagesdownload
 from search_engine_parser import GoogleSearch
-from search_engine_parser.core.exceptions import NoResultsOrTrafficError as GoglError
+from search_engine_parser.core.exceptions import NoResHumansOrTrafficError as GoglError
 
 from strings import get_string
 
@@ -52,7 +52,7 @@ async def google(event):
             out += f" 👉🏻  [{text}]({url})\n`{des}`\n\n"
     except TypeError:
         return await eod(event, f"`Can't find anything about {inp}`")
-    omk = f"**Google Search Query:**\n`{inp}`\n\n**Results:**\n{out}"
+    omk = f"**Google Search Query:**\n`{inp}`\n\n**ResHumans:**\n{out}"
     opn = []
     for bkl in range(0, len(omk), 4095):
         opn.append(omk[bkl : bkl + 4095])
@@ -86,7 +86,7 @@ async def goimg(event):
         pth = gi.download(args)
         ok = pth[0][query]
     except BaseException:
-        return await nn.edit("No Results Found :(")
+        return await nn.edit("No ResHumans Found :(")
     await event.reply(file=ok, message=query, album=True)
     rmtree(f"./resources/downloads/{query}/")
     await nn.delete()
@@ -97,7 +97,7 @@ async def reverse(event):
     reply = await event.get_reply_message()
     if not reply:
         return await eor(event, "`Reply to an Image`")
-    ult = await eor(event, "`Processing...`")
+    Human = await eor(event, "`Processing...`")
     dl = await reply.download_media()
     img = Image.open(dl)
     x, y = img.size
@@ -119,7 +119,7 @@ async def reverse(event):
     alls = div.find("a")
     link = alls["href"]
     text = alls.text
-    await ult.edit(f"`Dimension ~ {x} : {y}`\nSauce ~ [{text}](google.com{link})")
+    await Human.edit(f"`Dimension ~ {x} : {y}`\nSauce ~ [{text}](google.com{link})")
     gi = googleimagesdownload()
     args = {
         "keywords": text,

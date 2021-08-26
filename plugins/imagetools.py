@@ -69,11 +69,11 @@ async def sketch(e):
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -84,10 +84,10 @@ async def sketch(e):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
     img = cv2.imread(file)
     gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     inverted_gray_image = 255 - gray_image
@@ -110,17 +110,17 @@ async def _(event):
     image = await reply.download_media()
     img = cv2.VideoCapture(image)
     ret, frame = img.read()
-    cv2.imwrite("ult.jpg", frame)
+    cv2.imwrite("Human.jpg", frame)
     if HumandB.get("DEEP_API"):
         key = Redis("DEEP_API")
     else:
         key = "quickstart-QUdJIGlzIGNvbWluZy4uLi4K"
     r = requests.post(
         "https://api.deepai.org/api/colorizer",
-        files={"image": open("ult.jpg", "rb")},
+        files={"image": open("Human.jpg", "rb")},
         headers={"api-key": key},
     )
-    os.remove("ult.jpg")
+    os.remove("Human.jpg")
     os.remove(image)
     if "status" in r.json():
         return await event.edit(
@@ -134,16 +134,16 @@ async def _(event):
 @Humanoid_cmd(
     pattern="grey$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     if not (ureply and (ureply.media)):
         await eor(event, "`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         xx = await eor(event, "`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -154,38 +154,38 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         xx = await eor(event, "`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    Humanoid = cv2.cvtColor(ult, cv2.COLOR_BGR2GRAY)
-    cv2.imwrite("ult.jpg", Humanoid)
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    Humanoid = cv2.cvtColor(Human, cv2.COLOR_BGR2GRAY)
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
     pattern="blur$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     if not (ureply and (ureply.media)):
         await eor(event, "`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         xx = await eor(event, "`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -196,39 +196,39 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         xx = await eor(event, "`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    Humanoid = cv2.GaussianBlur(ult, (35, 35), 0)
-    cv2.imwrite("ult.jpg", Humanoid)
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    Humanoid = cv2.GaussianBlur(Human, (35, 35), 0)
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
     pattern="negative$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -239,39 +239,39 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    Humanoid = cv2.bitwise_not(ult)
-    cv2.imwrite("ult.jpg", Humanoid)
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    Humanoid = cv2.bitwise_not(Human)
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
     pattern="mirror$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -282,40 +282,40 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    ish = cv2.flip(ult, 1)
-    Humanoid = cv2.hconcat([ult, ish])
-    cv2.imwrite("ult.jpg", Humanoid)
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    ish = cv2.flip(Human, 1)
+    Humanoid = cv2.hconcat([Human, ish])
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
     pattern="flip$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -326,41 +326,41 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    trn = cv2.flip(ult, 1)
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    trn = cv2.flip(Human, 1)
     ish = cv2.rotate(trn, cv2.ROTATE_180)
-    Humanoid = cv2.vconcat([ult, ish])
-    cv2.imwrite("ult.jpg", Humanoid)
+    Humanoid = cv2.vconcat([Human, ish])
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
     pattern="quad$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -371,43 +371,43 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    roid = cv2.flip(ult, 1)
-    mici = cv2.hconcat([ult, roid])
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    roid = cv2.flip(Human, 1)
+    mici = cv2.hconcat([Human, roid])
     fr = cv2.flip(mici, 1)
     trn = cv2.rotate(fr, cv2.ROTATE_180)
     Humanoid = cv2.vconcat([mici, trn])
-    cv2.imwrite("ult.jpg", Humanoid)
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
     pattern="toon$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -418,17 +418,17 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    height, width, channels = ult.shape
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    height, width, channels = Human.shape
     samples = np.zeros([height * width, 3], dtype=np.float32)
     count = 0
     for x in range(height):
         for y in range(width):
-            samples[count] = ult[x][y]
+            samples[count] = Human[x][y]
             count += 1
     compactness, labels, centers = cv2.kmeans(
         samples,
@@ -440,34 +440,34 @@ async def ultd(event):
     )
     centers = np.uint8(centers)
     ish = centers[labels.flatten()]
-    Humanoid = ish.reshape(ult.shape)
-    cv2.imwrite("ult.jpg", Humanoid)
+    Humanoid = ish.reshape(Human.shape)
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
     pattern="danger$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -478,61 +478,61 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
-    ult = cv2.imread(file)
-    dan = cv2.cvtColor(ult, cv2.COLOR_BGR2RGB)
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
+    Human = cv2.imread(file)
+    dan = cv2.cvtColor(Human, cv2.COLOR_BGR2RGB)
     Humanoid = cv2.cvtColor(dan, cv2.COLOR_HSV2BGR)
-    cv2.imwrite("ult.jpg", Humanoid)
+    cv2.imwrite("Human.jpg", Humanoid)
     await event.client.send_file(
         event.chat_id,
-        "ult.jpg",
+        "Human.jpg",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.jpg")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.jpg")
+    os.remove(Humant)
 
 
 @Humanoid_cmd(pattern="csample (.*)")
-async def sampl(ult):
-    color = ult.pattern_match.group(1)
+async def sampl(Human):
+    color = Human.pattern_match.group(1)
     if color:
         img = Image.new("RGB", (200, 100), f"{color}")
         img.save("csample.png")
         try:
             try:
-                await ult.delete()
-                await ult.client.send_message(
-                    ult.chat_id, f"Colour Sample for `{color}` !", file="csample.png"
+                await Human.delete()
+                await Human.client.send_message(
+                    Human.chat_id, f"Colour Sample for `{color}` !", file="csample.png"
                 )
             except MessageDeleteForbiddenError:
-                await ult.reply(f"Colour Sample for `{color}` !", file="csample.png")
+                await Human.reply(f"Colour Sample for `{color}` !", file="csample.png")
         except ChatSendMediaForbiddenError:
-            await eor(ult, "Umm! Sending Media is disabled here!")
+            await eor(Human, "Umm! Sending Media is disabled here!")
 
     else:
-        await eor(ult, f"Wrong Color Name/Hex Code specified!")
+        await eor(Human, f"Wrong Color Name/Hex Code specified!")
 
 
 @Humanoid_cmd(
     pattern="blue$",
 )
-async def ultd(event):
+async def Humand(event):
     ureply = await event.get_reply_message()
     xx = await eor(event, "`...`")
     if not (ureply and (ureply.media)):
         await xx.edit("`Reply to any media`")
         return
-    ultt = await ureply.download_media()
-    if ultt.endswith(".tgs"):
+    Humant = await ureply.download_media()
+    if Humant.endswith(".tgs"):
         await xx.edit("`Ooo Animated Sticker 👀...`")
-        cmd = ["lottie_convert.py", ultt, "ult.png"]
-        file = "ult.png"
+        cmd = ["lottie_convert.py", Humant, "Human.png"]
+        file = "Human.png"
         process = await asyncio.create_subprocess_exec(
             *cmd,
             stdout=asyncio.subprocess.PIPE,
@@ -543,10 +543,10 @@ async def ultd(event):
         stdout.decode().strip()
     else:
         await xx.edit("`Processing...`")
-        img = cv2.VideoCapture(ultt)
+        img = cv2.VideoCapture(Humant)
         heh, lol = img.read()
-        cv2.imwrite("ult.png", lol)
-        file = "ult.png"
+        cv2.imwrite("Human.png", lol)
+        file = "Human.png"
     got = upf(file)
     lnk = f"https://telegra.ph{got[0]}"
     r = requests.get(
@@ -556,17 +556,17 @@ async def ultd(event):
     utd = url(ms)
     if not utd:
         return
-    with open("ult.png", "wb") as f:
+    with open("Human.png", "wb") as f:
         f.write(requests.get(ms).content)
-    img = Image.open("ult.png").convert("RGB")
-    img.save("ult.webp", "webp")
+    img = Image.open("Human.png").convert("RGB")
+    img.save("Human.webp", "webp")
     await event.client.send_file(
         event.chat_id,
-        "ult.webp",
+        "Human.webp",
         force_document=False,
         reply_to=event.reply_to_msg_id,
     )
     await xx.delete()
-    os.remove("ult.png")
-    os.remove("ult.webp")
-    os.remove(ultt)
+    os.remove("Human.png")
+    os.remove("Human.webp")
+    os.remove(Humant)

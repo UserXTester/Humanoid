@@ -24,27 +24,27 @@ from . import *
 @Humanoid_cmd(
     pattern="addsudo ?(.*)",
 )
-async def _(ult):
-    if not ult.out and not is_fullsudo(ult.sender_id):
-        return await eod(ult, "`This Command is Sudo Restricted!..`")
-    inputs = ult.pattern_match.group(1)
-    if str(ult.sender_id) in sudoers():
-        return await eod(ult, "`Sudo users can't add new sudos!`", time=10)
-    ok = await eor(ult, "`Updating SUDO Users List ...`")
+async def _(Human):
+    if not Human.out and not is_fullsudo(Human.sender_id):
+        return await eod(Human, "`This Command is Sudo Restricted!..`")
+    inputs = Human.pattern_match.group(1)
+    if str(Human.sender_id) in sudoers():
+        return await eod(Human, "`Sudo users can't add new sudos!`", time=10)
+    ok = await eor(Human, "`Updating SUDO Users List ...`")
     mmm = ""
-    if ult.reply_to_msg_id:
-        replied_to = await ult.get_reply_message()
+    if Human.reply_to_msg_id:
+        replied_to = await Human.get_reply_message()
         sender = replied_to.sender
         id = sender.id
         name = sender.first_name
     elif inputs:
         id = await get_user_id(inputs)
         try:
-            name = (await ult.client.get_entity(int(id))).first_name
+            name = (await Human.client.get_entity(int(id))).first_name
         except BaseException:
             name = ""
     else:
-        return await eod(ult, "`Reply to a msg or add it's id/username.`")
+        return await eod(Human, "`Reply to a msg or add it's id/username.`")
 
     if id == Humanoid_bot.me.id:
         mmm += "You cant add yourself as Sudo User..."
@@ -67,29 +67,29 @@ async def _(ult):
 @Humanoid_cmd(
     pattern="delsudo ?(.*)",
 )
-async def _(ult):
-    if not ult.out and not is_fullsudo(ult.sender_id):
-        return await eod(ult, "`This Command is Sudo Restricted!..`")
-    inputs = ult.pattern_match.group(1)
-    if str(ult.sender_id) in sudoers():
+async def _(Human):
+    if not Human.out and not is_fullsudo(Human.sender_id):
+        return await eod(Human, "`This Command is Sudo Restricted!..`")
+    inputs = Human.pattern_match.group(1)
+    if str(Human.sender_id) in sudoers():
         return await eod(
-            ult,
+            Human,
             "You are sudo user, You cant remove other sudo user.",
         )
-    ok = await eor(ult, "`Updating SUDO Users List ...`")
+    ok = await eor(Human, "`Updating SUDO Users List ...`")
     mmm = ""
-    if ult.reply_to_msg_id:
-        replied_to = await ult.get_reply_message()
+    if Human.reply_to_msg_id:
+        replied_to = await Human.get_reply_message()
         id = replied_to.sender_id
         name = replied_to.sender.first_name
     elif inputs:
         id = await get_user_id(inputs)
         try:
-            name = (await ult.client.get_entity(int(id))).first_name
+            name = (await Human.client.get_entity(int(id))).first_name
         except BaseException:
             name = ""
     else:
-        return await eod(ult, "`Reply to a msg or add it's id/username.`")
+        return await eod(Human, "`Reply to a msg or add it's id/username.`")
     if not is_sudo(id):
         if name != "":
             mmm += f"[{name}](tg://user?id={id}) `wasn't a SUDO User ...`"
@@ -108,16 +108,16 @@ async def _(ult):
 @Humanoid_cmd(
     pattern="listsudo$",
 )
-async def _(ult):
-    ok = await eor(ult, "`...`")
+async def _(Human):
+    ok = await eor(Human, "`...`")
     sudos = Redis("SUDOS")
     if sudos == "" or sudos is None:
-        return await eod(ult, "`No SUDO User was assigned ...`", time=5)
+        return await eod(Human, "`No SUDO User was assigned ...`", time=5)
     sumos = sudos.split(" ")
     msg = ""
     for i in sumos:
         try:
-            name = (await ult.client.get_entity(int(i))).first_name
+            name = (await Human.client.get_entity(int(i))).first_name
         except BaseException:
             name = ""
         if name != "":

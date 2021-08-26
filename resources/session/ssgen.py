@@ -86,7 +86,7 @@ def telethon_session():
     try:
         with TelegramClient(StringSession(), API_ID, API_HASH) as Humanoid:
             print("Generating a user session for Humanoid...")
-            ult = Humanoid.send_message(
+            Human = Humanoid.send_message(
                 "me",
                 f"**Humanoid** `SESSION`:\n\n`{Humanoid.session.save()}`\n\n**Do not share this anywhere!**",
             )

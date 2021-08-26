@@ -15,7 +15,7 @@ help_3: "`Please turn on inline mode for your bot from` @Botfather."
 
 # autopic
 autopic_1: "Heya Give me some Text .."
-autopic_2: "No Results found for `{}`"
+autopic_2: "No ResHumans found for `{}`"
 autopic_3: "Got a Collection `{}` related to your search !\nStarting Autopic !"
 
 # inline

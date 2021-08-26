@@ -117,22 +117,22 @@ async def _(event):
     type=["official", "manager"],
     ignore_dualmode=True,
 )
-async def _(ult):
+async def _(Human):
     mentions = "**Bots in this Chat**: \n"
-    input_str = ult.pattern_match.group(1)
-    to_write_chat = await ult.get_input_chat()
+    input_str = Human.pattern_match.group(1)
+    to_write_chat = await Human.get_input_chat()
     chat = None
     if not input_str:
         chat = to_write_chat
     else:
         mentions = f"**Bots in **{input_str}: \n"
         try:
-            chat = await ult.client.get_entity(input_str)
+            chat = await Human.client.get_entity(input_str)
         except Exception as e:
-            await eor(ult, str(e))
+            await eor(Human, str(e))
             return None
     try:
-        async for x in ult.client.iter_participants(
+        async for x in Human.client.iter_participants(
             chat,
             filter=ChannelParticipantsBots,
         ):
@@ -150,18 +150,18 @@ async def _(ult):
                 )
     except Exception as e:
         mentions += " " + str(e) + "\n"
-    await eor(ult, mentions)
+    await eor(Human, mentions)
 
 
 @Humanoid_cmd(
     pattern="hl",
 )
-async def _(ult):
+async def _(Human):
     try:
-        input = ult.text.split(" ", maxsplit=1)[1]
+        input = Human.text.split(" ", maxsplit=1)[1]
     except IndexError:
-        return await eod(ult, "`Input some link`", time=5)
-    await eor(ult, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input + ")", link_preview=False)
+        return await eod(Human, "`Input some link`", time=5)
+    await eor(Human, "[ㅤㅤㅤㅤㅤㅤㅤ](" + input + ")", link_preview=False)
 
 
 @Humanoid_cmd(
@@ -198,10 +198,10 @@ async def _(e):
         )
         await z.edit("**Dᴏᴡɴʟᴏᴀᴅᴇᴅ...\nNᴏᴡ Cᴏɴᴠᴇʀᴛɪɴɢ...**")
         await bash(
-            f'ffmpeg -i "{c.name}" -preset ultrafast -acodec libmp3lame -ac 2 -ab 144 -ar 44100 comp.mp3'
+            f'ffmpeg -i "{c.name}" -preset Humanrafast -acodec libmp3lame -ac 2 -ab 144 -ar 44100 comp.mp3'
         )
         await bash(
-            f'ffmpeg -y -i "{thumb}" -i comp.mp3 -preset ultrafast -c:a copy circle.mp4'
+            f'ffmpeg -y -i "{thumb}" -i comp.mp3 -preset Humanrafast -c:a copy circle.mp4'
         )
         taime = time.time()
         foile = await uploader("circle.mp4", "circle.mp4", taime, z, "Uᴘʟᴏᴀᴅɪɴɢ...")

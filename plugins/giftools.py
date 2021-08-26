@@ -39,10 +39,10 @@ async def igif(e):
     xx = await eor(e, "`Processing...`")
     z = await a.download_media()
     try:
-        await bash(f'ffmpeg -i "{z}" -vf format=gray ult.gif -y')
-        await e.client.send_file(e.chat_id, "ult.gif", support_stream=True)
+        await bash(f'ffmpeg -i "{z}" -vf format=gray Human.gif -y')
+        await e.client.send_file(e.chat_id, "Human.gif", support_stream=True)
         os.remove(z)
-        os.remove("ult.gif")
+        os.remove("Human.gif")
         await xx.delete()
     except Exception as er:
         LOGS.info(er)
@@ -60,19 +60,19 @@ async def igif(e):
     z = await a.download_media()
     try:
         await bash(
-            f'ffmpeg -i "{z}" -vf lutyuv="y=negval:u=negval:v=negval" ult.gif -y'
+            f'ffmpeg -i "{z}" -vf lutyuv="y=negval:u=negval:v=negval" Human.gif -y'
         )
-        await e.client.send_file(e.chat_id, "ult.gif", support_stream=True)
+        await e.client.send_file(e.chat_id, "Human.gif", support_stream=True)
         os.remove(z)
-        os.remove("ult.gif")
+        os.remove("Human.gif")
         await xx.delete()
     except Exception as er:
         LOGS.info(er)
 
 
 @Humanoid_cmd(pattern="gif ?(.*)")
-async def gifs(ult):
-    get = ult.pattern_match.group(1)
+async def gifs(Human):
+    get = Human.pattern_match.group(1)
     xx = random.randint(0, 5)
     n = 0
     if ";" in get:
@@ -81,17 +81,17 @@ async def gifs(ult):
         except BaseException:
             pass
     if not get:
-        return await eor(ult, f"`{HNDLR}gif <query>`")
-    m = await eor(ult, "`Searching gif ...`")
-    gifs = await ult.client.inline_query("gif", get)
+        return await eor(Human, f"`{HNDLR}gif <query>`")
+    m = await eor(Human, "`Searching gif ...`")
+    gifs = await Human.client.inline_query("gif", get)
     if not n:
         await gifs[xx].click(
-            ult.chat.id, reply_to=ult.reply_to_msg_id, silent=True, hide_via=True
+            Human.chat.id, reply_to=Human.reply_to_msg_id, silent=True, hide_via=True
         )
     else:
         for x in range(n):
             await gifs[x].click(
-                ult.chat.id, reply_to=ult.reply_to_msg_id, silent=True, hide_via=True
+                Human.chat.id, reply_to=Human.reply_to_msg_id, silent=True, hide_via=True
             )
     await m.delete()
 
@@ -110,11 +110,11 @@ async def vtogif(e):
     if int(dur) < 120:
         z = await a.download_media()
         await bash(
-            f'ffmpeg -i {z} -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 ult.gif -y'
+            f'ffmpeg -i {z} -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 Human.gif -y'
         )
-        await e.client.send_file(e.chat_id, "ult.gif", support_stream=True)
+        await e.client.send_file(e.chat_id, "Human.gif", support_stream=True)
         os.remove(z)
-        os.remove("ult.gif")
+        os.remove("Human.gif")
         await xx.delete()
     else:
         filename = a.file.name
@@ -123,9 +123,9 @@ async def vtogif(e):
         vid = await downloader(filename, a.media.document, xx, tt, "Downloading...")
         z = vid.name
         await bash(
-            f'ffmpeg -ss 3 -t 100 -i {z} -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 ult.gif'
+            f'ffmpeg -ss 3 -t 100 -i {z} -vf "fps=10,scale=320:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 Human.gif'
         )
-        await e.client.send_file(e.chat_id, "ult.gif", support_stream=True)
+        await e.client.send_file(e.chat_id, "Human.gif", support_stream=True)
         os.remove(z)
-        os.remove("ult.gif")
+        os.remove("Human.gif")
         await xx.delete()

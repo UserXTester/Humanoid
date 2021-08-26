@@ -9,11 +9,11 @@
 
 • `{i}pdf <page num> <reply to pdf file>`
     Extract nd Send page as a Image.(note-: For Extraction all pages just use .pdf)
-    You Can use multi pages too like `{i}pdf 1-7`
+    You Can use mHumani pages too like `{i}pdf 1-7`
 
 • `{i}pdtext <page num> <reply to pdf file>`
     Extract Text From the Pdf.(note-: For Extraction all text just use .pdtext)
-    You Can use multi pages too like `{i}pdf 1-7`
+    You Can use mHumani pages too like `{i}pdf 1-7`
 
 • `{i}pdscan <reply to image>`
     It scan, crop nd send img as pdf.
@@ -57,7 +57,7 @@ async def pdfseimg(event):
     file = ok.media.document
     k = time.time()
     filename = "hehe.pdf"
-    result = await downloader(
+    resHuman = await downloader(
         "pdf/" + filename,
         file,
         xx,
@@ -72,7 +72,7 @@ async def pdfseimg(event):
         for num in range(pdf.numPages):
             pw = PdfFileWriter()
             pw.addPage(pdf.getPage(num))
-            with open(os.path.join("pdf/ult{}.png".format(num + 1)), "wb") as f:
+            with open(os.path.join("pdf/Human{}.png".format(num + 1)), "wb") as f:
                 pw.write(f)
         os.remove(pdfp)
         afl = glob.glob("pdf/*")
@@ -87,25 +87,25 @@ async def pdfseimg(event):
         for o in range(ok):
             pw = PdfFileWriter()
             pw.addPage(pdf.getPage(o))
-            with open(os.path.join("ult.png"), "wb") as f:
+            with open(os.path.join("Human.png"), "wb") as f:
                 pw.write(f)
             await event.reply(
-                file="ult.png",
+                file="Human.png",
             )
-            os.remove("ult.png")
+            os.remove("Human.png")
         os.remove(pdfp)
     elif msg:
         o = int(msg) - 1
         pw = PdfFileWriter()
         pw.addPage(pdf.getPage(o))
-        with open(os.path.join("ult.png"), "wb") as f:
+        with open(os.path.join("Human.png"), "wb") as f:
             pw.write(f)
         os.remove(pdfp)
         try:
-            await event.reply(file="ult.png")
+            await event.reply(file="Human.png")
         except PhotoSaveFileInvalidError:
-            await event.reply(file="ult.png", force_document=True)
-        os.remove("ult.png")
+            await event.reply(file="Human.png", force_document=True)
+        os.remove("Human.png")
 
 
 @Humanoid_cmd(
@@ -121,7 +121,7 @@ async def pdfsetxt(event):
     file = ok.media.document
     k = time.time()
     filename = ok.file.name
-    result = await downloader(
+    resHuman = await downloader(
         filename,
         file,
         xx,
@@ -129,7 +129,7 @@ async def pdfsetxt(event):
         "Downloading " + filename + "...",
     )
     await xx.delete()
-    dl = result.name
+    dl = resHuman.name
     if not msg:
         pdf = PdfFileReader(dl)
         text = f"{dl.split('.')[0]}.txt"
@@ -188,13 +188,13 @@ async def imgscan(event):
     if not (ok and (ok.media)):
         await eor(event, "`Reply The pdf u Want to Download..`")
         return
-    ultt = await ok.download_media()
-    if not ultt.endswith(("png", "jpg", "jpeg", "webp")):
+    Humant = await ok.download_media()
+    if not Humant.endswith(("png", "jpg", "jpeg", "webp")):
         await eor(event, "`Reply to a Image only...`")
-        os.remove(ultt)
+        os.remove(Humant)
         return
     xx = await eor(event, "`Processing...`")
-    image = cv2.imread(ultt)
+    image = cv2.imread(Humant)
     original_image = image.copy()
     ratio = image.shape[0] / 500.0
     image = imutils.resize(image, height=500)
@@ -228,11 +228,11 @@ async def imgscan(event):
     cv2.imwrite("o.png", ok)
     image1 = PIL.Image.open("o.png")
     im1 = image1.convert("RGB")
-    scann = f"Scanned {ultt.split('.')[0]}.pdf"
+    scann = f"Scanned {Humant.split('.')[0]}.pdf"
     im1.save(scann)
     await event.client.send_file(event.chat_id, scann, reply_to=event.reply_to_msg_id)
     await xx.delete()
-    os.remove(ultt)
+    os.remove(Humant)
     os.remove("o.png")
     os.remove(scann)
 
@@ -248,10 +248,10 @@ async def savepdf(event):
             "`Reply to Images/pdf which u want to merge as a single pdf..`",
         )
         return
-    ultt = await ok.download_media()
-    if ultt.endswith(("png", "jpg", "jpeg", "webp")):
+    Humant = await ok.download_media()
+    if Humant.endswith(("png", "jpg", "jpeg", "webp")):
         xx = await eor(event, "`Processing...`")
-        image = cv2.imread(ultt)
+        image = cv2.imread(Humant)
         original_image = image.copy()
         ratio = image.shape[0] / 500.0
         image = imutils.resize(image, height=500)
@@ -293,7 +293,7 @@ async def savepdf(event):
             f"Done, Now Reply Another Image/pdf if completed then use {hndlr}pdsend to merge nd send all as pdf",
         )
         os.remove("o.png")
-    elif ultt.endswith(".pdf"):
+    elif Humant.endswith(".pdf"):
         a = dani_ck("pdf/scan.pdf")
         await event.client.download_media(ok, a)
         await eor(
@@ -302,7 +302,7 @@ async def savepdf(event):
         )
     else:
         await eor(event, "`Reply to a Image/pdf only...`")
-    os.remove(ultt)
+    os.remove(Humant)
 
 
 @Humanoid_cmd(
@@ -312,7 +312,7 @@ async def sendpdf(event):
     if not os.path.exists("pdf/scan.pdf"):
         await eor(
             event,
-            "first select pages by replying .pdsave of which u want to make multi page pdf file",
+            "first select pages by replying .pdsave of which u want to make mHumani page pdf file",
         )
         return
     msg = event.pattern_match.group(1)

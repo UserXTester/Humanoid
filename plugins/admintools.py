@@ -61,18 +61,18 @@ from . import *
     type=["official", "manager"],
     ignore_dualmode=True,
 )
-async def prmte(ult):
-    xx = await eor(ult, get_string("com_1"))
-    await ult.get_chat()
-    user, rank = await get_user_info(ult)
+async def prmte(Human):
+    xx = await eor(Human, get_string("com_1"))
+    await Human.get_chat()
+    user, rank = await get_user_info(Human)
     if not rank:
         rank = "Admin"
     if not user:
         return await xx.edit("`Reply to a user to promote him!`")
     try:
-        await ult.client(
+        await Human.client(
             EditAdminRequest(
-                ult.chat_id,
+                Human.chat_id,
                 user.id,
                 ChatAdminRights(
                     add_admins=False,
@@ -86,7 +86,7 @@ async def prmte(ult):
             ),
         )
         await xx.edit(
-            f"{inline_mention(user)} `is now an admin in {ult.chat.title} with title {rank}.`",
+            f"{inline_mention(user)} `is now an admin in {Human.chat.title} with title {rank}.`",
         )
     except BadRequestError:
         return await xx.edit("`I don't have the right to promote you.`")
@@ -100,18 +100,18 @@ async def prmte(ult):
     type=["official", "manager"],
     ignore_dualmode=True,
 )
-async def dmote(ult):
-    xx = await eor(ult, get_string("com_1"))
-    await ult.get_chat()
-    user, rank = await get_user_info(ult)
+async def dmote(Human):
+    xx = await eor(Human, get_string("com_1"))
+    await Human.get_chat()
+    user, rank = await get_user_info(Human)
     if not rank:
         rank = "Not Admin"
     if not user:
         return await xx.edit("`Reply to a user to demote him!`")
     try:
-        await ult.client(
+        await Human.client(
             EditAdminRequest(
-                ult.chat_id,
+                Human.chat_id,
                 user.id,
                 ChatAdminRights(
                     add_admins=None,
@@ -125,7 +125,7 @@ async def dmote(ult):
             ),
         )
         await xx.edit(
-            f"{inline_mention(user)} `is no longer an admin in {ult.chat.title}`",
+            f"{inline_mention(user)} `is no longer an admin in {Human.chat.title}`",
         )
     except BadRequestError:
         return await xx.edit("`I don't have the right to demote you.`")
@@ -139,36 +139,36 @@ async def dmote(ult):
     type=["official", "manager"],
     ignore_dualmode=True,
 )
-async def bban(ult):
-    xx = await eor(ult, get_string("com_1"))
-    user, reason = await get_user_info(ult)
+async def bban(Human):
+    xx = await eor(Human, get_string("com_1"))
+    user, reason = await get_user_info(Human)
     if not user:
         return await xx.edit("`Reply to a user or give username to ban him!`")
     if str(user.id) in DEVLIST:
         return await xx.edit(" `LoL, I can't Ban my Developer 😂`")
     try:
-        await ult.client.edit_permissions(ult.chat_id, user.id, view_messages=False)
+        await Human.client.edit_permissions(Human.chat_id, user.id, view_messages=False)
     except BadRequestError:
         return await xx.edit("`I don't have the right to ban a user.`")
     except UserIdInvalidError:
         return await xx.edit("`I couldn't get who he is!`")
     try:
-        reply = await ult.get_reply_message()
+        reply = await Human.get_reply_message()
         if reply:
             await reply.delete()
     except BadRequestError:
         return await xx.edit(
-            f"{inline_mention(user)}**was banned by** {inline_mention(ult.sender)} **in** `{ult.chat.title}`\n**Reason**: `{reason}`\n**Messages Deleted**: `False`",
+            f"{inline_mention(user)}**was banned by** {inline_mention(Human.sender)} **in** `{Human.chat.title}`\n**Reason**: `{reason}`\n**Messages Deleted**: `False`",
         )
     userme = inline_mention(user)
-    senderme = inline_mention(ult.sender)
+    senderme = inline_mention(Human.sender)
     if reason:
         await xx.edit(
-            f"{userme} **was banned by** {senderme}**in** `{ult.chat.title}`\n**Reason**: `{reason}`",
+            f"{userme} **was banned by** {senderme}**in** `{Human.chat.title}`\n**Reason**: `{reason}`",
         )
     else:
         await xx.edit(
-            f"{userme} **was banned by** {senderme} **in** `{ult.chat.title}`",
+            f"{userme} **was banned by** {senderme} **in** `{Human.chat.title}`",
         )
 
 
@@ -178,18 +178,18 @@ async def bban(ult):
     type=["official", "manager"],
     ignore_dualmode=True,
 )
-async def uunban(ult):
-    xx = await eor(ult, get_string("com_1"))
-    user, reason = await get_user_info(ult)
+async def uunban(Human):
+    xx = await eor(Human, get_string("com_1"))
+    user, reason = await get_user_info(Human)
     if not user:
         return await xx.edit("`Reply to a user or give username to unban him!`")
     try:
-        await ult.client.edit_permissions(ult.chat_id, user.id, view_messages=True)
+        await Human.client.edit_permissions(Human.chat_id, user.id, view_messages=True)
     except BadRequestError:
         return await xx.edit("`I don't have the right to unban a user.`")
     except UserIdInvalidError:
         await xx.edit("`I couldn't get who he is!`")
-    text = f"{inline_mention(user)} **was unbanned by** {inline_mention(ult.sender)} **in** `{ult.chat.title}`"
+    text = f"{inline_mention(user)} **was unbanned by** {inline_mention(Human.sender)} **in** `{Human.chat.title}`"
     if reason:
         text += f"\n**Reason**: `{reason}`"
     await xx.edit(text)
@@ -201,12 +201,12 @@ async def uunban(ult):
     type=["official", "manager"],
     ignore_dualmode=True,
 )
-async def kck(ult):
-    if ult.text == f"{HNDLR}kickme":
+async def kck(Human):
+    if Human.text == f"{HNDLR}kickme":
         return
-    xx = await eor(ult, get_string("com_1"))
-    await ult.get_chat()
-    user, reason = await get_user_info(ult)
+    xx = await eor(Human, get_string("com_1"))
+    await Human.get_chat()
+    user, reason = await get_user_info(Human)
     if not user:
         return await xx.edit("`Kick? Whom? I couldn't get his info...`")
     if str(user.id) in DEVLIST:
@@ -214,7 +214,7 @@ async def kck(ult):
     if user.id in [Humanoid_bot.uid, asst.me.id]:
         return await xx.edit("`You Can't kick that powerhouse`")
     try:
-        await ult.client.kick_participant(ult.chat_id, user.id)
+        await Human.client.kick_participant(Human.chat_id, user.id)
         await asyncio.sleep(0.5)
     except BadRequestError:
         return await xx.edit("`I don't have the right to kick a user.`")
@@ -222,7 +222,7 @@ async def kck(ult):
         return await xx.edit(
             f"`I don't have the right to kick a user.`\n\n**ERROR**:\n`{str(e)}`",
         )
-    text = f"{inline_mention(user)} **was kicked by** {inline_mention(ult.sender)} **in** `{ult.chat.title}`"
+    text = f"{inline_mention(user)} **was kicked by** {inline_mention(Human.sender)} **in** `{Human.chat.title}`"
     if reason:
         text += f"\n**Reason**: `{reason}`"
     await xx.edit(text)
@@ -261,23 +261,23 @@ async def pin(msg):
 @Humanoid_cmd(
     pattern="unpin($| (.*))", type=["official", "manager"], ignore_dualmode=True
 )
-async def unp(ult):
-    xx = await eor(ult, get_string("com_1"))
-    if not ult.is_private:
+async def unp(Human):
+    xx = await eor(Human, get_string("com_1"))
+    if not Human.is_private:
         # for (un)pin(s) in private messages
-        await ult.get_chat()
-    ch = (ult.pattern_match.group(1)).strip()
-    msg = ult.reply_to_msg_id
+        await Human.get_chat()
+    ch = (Human.pattern_match.group(1)).strip()
+    msg = Human.reply_to_msg_id
     if msg and not ch:
         try:
-            await ult.client.unpin_message(ult.chat_id, msg)
+            await Human.client.unpin_message(Human.chat_id, msg)
         except BadRequestError:
             return await xx.edit("`Hmm.. Guess I have no rights here!`")
         except Exception as e:
             return await xx.edit(f"**ERROR:**\n`{str(e)}`")
     elif ch == "all":
         try:
-            await ult.client.unpin_message(ult.chat_id)
+            await Human.client.unpin_message(Human.chat_id)
         except BadRequestError:
             return await xx.edit("`Hmm.. Guess I have no rights here!`")
         except Exception as e:
@@ -431,10 +431,10 @@ async def get_all_pinned(event):
     pattern="autodelete ?(.*)",
     admins_only=True,
 )
-async def autodelte(ult):  # Tg Feature
-    match = ult.pattern_match.group(1)
+async def autodelte(Human):  # Tg Feature
+    match = Human.pattern_match.group(1)
     if not match or match not in ["24h", "7d", "off"]:
-        return await eod(ult, "`Please Use Proper Format..`")
+        return await eod(Human, "`Please Use Proper Format..`")
     if match == "24h":
         tt = 3600 * 24
     elif match == "7d":
@@ -442,7 +442,7 @@ async def autodelte(ult):  # Tg Feature
     else:
         tt = 0
     try:
-        await ult.client(SetHistoryTTLRequest(ult.chat_id, period=tt))
+        await Human.client(SetHistoryTTLRequest(Human.chat_id, period=tt))
     except ChatNotModifiedError:
-        return await eod(ult, f"Auto Delete Setting is Already same to `{match}`")
-    await eor(ult, f"Auto Delete Status Changed to {match} !")
+        return await eod(Human, f"Auto Delete Setting is Already same to `{match}`")
+    await eor(Human, f"Auto Delete Status Changed to {match} !")

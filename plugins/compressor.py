@@ -15,7 +15,7 @@
     Less CRF == High Quality, More Size
     More CRF == Low Quality, Less Size
     CRF Range = 20-51
-    Default = 27
+    DefaHuman = 27
 
 """
 
@@ -81,7 +81,7 @@ async def _(e):
             with open(progress, "w") as fk:
                 pass
             proce = await asyncio.create_subprocess_shell(
-                f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{file.name}""" -preset ultrafast -vcodec libx265 -crf {crf} """{out}""" -y',
+                f'ffmpeg -hide_banner -loglevel quiet -progress {progress} -i """{file.name}""" -preset Humanrafast -vcodec libx265 -crf {crf} """{out}""" -y',
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
             )
