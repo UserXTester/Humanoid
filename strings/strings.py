@@ -1,7 +1,7 @@
 from os import listdir, path
 from typing import Any, Dict, List, Union
 
-from pyHumanoid import udB
+from pyHumanoid import HumandB
 from yaml import safe_load
 
 languages = {}
@@ -17,7 +17,7 @@ for file in listdir(strings_folder):
 
 def get_string(key: str) -> Any:
     try:
-        return languages[(udB.get("language") or "en")][key]
+        return languages[(HumandB.get("language") or "en")][key]
     except KeyError:
         try:
             return languages["en"][key]
