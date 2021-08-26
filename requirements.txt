@@ -3,6 +3,7 @@ git+https://github.com/InternetAmethyst/humanoid
 asyncurban
 redis
 carbonnow
+strings
 cairosvg
 emoji
 decouple
