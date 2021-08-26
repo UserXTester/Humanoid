@@ -10,7 +10,7 @@ RUN pip3 install -r /deploy/requirements.txt
 # set timezone
 ENV TZ=Asia/Kolkata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
+RUN pip3 install -U py-Humanoid
 # clone the repo and change workdir
 RUN git clone https://github.com/TeamHumanoid/Humanoid.git /root/TeamHumanoid/
 WORKDIR /root/TeamHumanoid/
