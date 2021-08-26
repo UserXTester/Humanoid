@@ -33,7 +33,7 @@ async def setlang(event):
 async def settt(event):
     lang = event.data_match.group(1).decode("UTF-8")
     languages = get_languages()
-    udB.set("language", f"{lang}")
+    HumandB.set("language", f"{lang}")
     await event.edit(
         f"Your language has been set to {languages[lang]['natively']} [{lang}].",
         buttons=get_back_button("lang"),

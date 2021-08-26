@@ -21,7 +21,7 @@ Owner_info_msg = f"""
 <strong>Owner</strong> - {OWNER_NAME}
 <stong>OwnerID</strong> - <code>{OWNER_ID}</code>
 
-<strong>Message Forwards</strong> - {udB.get("PMBOT")}
+<strong>Message Forwards</strong> - {HumandB.get("PMBOT")}
 
 <stong>Humanoid <a href=https://github.com/TeamHumanoid/Humanoid>[v{Humanoid_version}]</a>, powered by @TeamHumanoid</strong>
 """
@@ -81,8 +81,8 @@ async def Humanoid(event):
         if str(event.sender_id) not in owner_and_sudos():
             ok = ""
             u = await event.client.get_entity(event.chat_id)
-            if not udB.get("STARTMSG"):
-                if udB.get("PMBOT") == "True":
+            if not HumandB.get("STARTMSG"):
+                if HumandB.get("PMBOT") == "True":
                     ok = "You can contact my master using this bot!!\n\nSend your Message, I will Deliver it To Master."
                 await event.reply(
                     f"Hey there [{get_display_name(u)}](tg://user?id={u.id}), this is Humanoid Assistant of [{Humanoid_bot.me.first_name}](tg://user?id={Humanoid_bot.uid})!\n\n{ok}",

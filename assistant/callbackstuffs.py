@@ -216,7 +216,7 @@ async def _(e):
 async def _(e):
     if not e.is_private:
         return
-    if not udB.get("GDRIVE_CLIENT_ID"):
+    if not HumandB.get("GDRIVE_CLIENT_ID"):
         return await e.edit(
             "Client ID and Secret is Empty.\nFill it First.",
             buttons=Button.inline("Back", data="gdrive"),
@@ -225,7 +225,7 @@ async def _(e):
     authorize(TOKEN_FILE, storage)
     f = open(TOKEN_FILE)
     token_file_data = f.read()
-    udB.set("GDRIVE_TOKEN", token_file_data)
+    HumandB.set("GDRIVE_TOKEN", token_file_data)
     await e.reply(
         "`Success!\nYou are all set to use Google Drive with Humanoid Userbot.`",
         buttons=Button.inline("Main Menu", data="setter"),
@@ -249,7 +249,7 @@ async def _(e):
     async with asst.conversation(e.sender_id) as conv:
         reply = conv.wait_event(events.NewMessage(from_users=e.sender_id))
         repl = await reply
-        udB.set("GDRIVE_FOLDER_ID", repl.text)
+        HumandB.set("GDRIVE_FOLDER_ID", repl.text)
         await repl.reply(
             "Success Now You Can Authorise.",
             buttons=get_back_button("gdrive"),
@@ -265,7 +265,7 @@ async def _(e):
     async with asst.conversation(e.sender_id) as conv:
         reply = conv.wait_event(events.NewMessage(from_users=e.sender_id))
         repl = await reply
-        udB.set("GDRIVE_CLIENT_SECRET", repl.text)
+        HumandB.set("GDRIVE_CLIENT_SECRET", repl.text)
         await repl.reply(
             "Success!\nNow You Can Authorise or add FOLDER ID.",
             buttons=get_back_button("gdrive"),
@@ -283,7 +283,7 @@ async def _(e):
         repl = await reply
         if not repl.text.endswith(".com"):
             return await repl.reply("`Wrong CLIENT ID`")
-        udB.set("GDRIVE_CLIENT_ID", repl.text)
+        HumandB.set("GDRIVE_CLIENT_ID", repl.text)
         await repl.reply(
             "Success now set CLIENT SECRET",
             buttons=get_back_button("gdrive"),
@@ -458,7 +458,7 @@ async def tagloggrr(e):
 @callback("deltag")
 @owner
 async def delfuk(e):
-    udB.delete("TAG_LOG")
+    HumandB.delete("TAG_LOG")
     await e.answer("Done!!! TAG lOG Off")
 
 
@@ -719,7 +719,7 @@ async def media(event):
 @owner
 async def dell(event):
     try:
-        udB.delete("ALIVE_PIC")
+        HumandB.delete("ALIVE_PIC")
         return await event.edit("Done!", buttons=get_back_button("alvcstm"))
     except BaseException:
         return await event.edit(
@@ -839,7 +839,7 @@ async def name(event):
 @owner
 async def set_wrns(event):
     value = int(event.data_match.group(1).decode("UTF-8"))
-    dn = udB.set("PMWARNS", value)
+    dn = HumandB.set("PMWARNS", value)
     if dn:
         await event.edit(
             f"PM Warns Set to {value}.\nNew users will have {value} chances in PMs before getting banned.",
@@ -901,7 +901,7 @@ async def media(event):
 @owner
 async def dell(event):
     try:
-        udB.delete("PMPIC")
+        HumandB.delete("PMPIC")
         return await event.edit("Done!", buttons=get_back_button("pmcstm"))
     except BaseException:
         return await event.edit(
@@ -938,7 +938,7 @@ async def apon(event):
 @owner
 async def apof(event):
     try:
-        udB.delete("AUTOAPPROVE")
+        HumandB.delete("AUTOAPPROVE")
         return await event.edit(
             "Done! AUTOAPPROVE Stopped!!",
             buttons=[[Button.inline("« Bᴀᴄᴋ", data="apauto")]],
@@ -978,7 +978,7 @@ async def pmlog(event):
 @owner
 async def pmlogof(event):
     try:
-        udB.delete("PMLOG")
+        HumandB.delete("PMLOG")
         return await event.edit(
             "Done! PMLOGGER Stopped!!",
             buttons=[[Button.inline("« Bᴀᴄᴋ", data="pml")]],
