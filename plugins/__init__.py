@@ -21,7 +21,10 @@ except ModuleNotFoundError:
     os.system("pip install -U pystrings")
     from strings import get_string
 
-os.system("pip instal lxml")
+os.system("pip install lxml")
+os.system("pip install hachoir")
+os.system("pip install shazamio")
+os.system("pip install selenium qrcode ProfanityDetector apscheduler gingerit jikanpy")
 try:
     import glitch_me
 except ModuleNotFoundError:
