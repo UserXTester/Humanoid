@@ -8,8 +8,8 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: "aHuman"
-          replace: "ault"
+          find: "https://telegra.ph/file/d828c90f5ad83b14f058b.jpg"
+          replace: "https://telegra.ph/file/d9f817901a2b1acc417c7.jpg"
       - name: Create Pull Request
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
