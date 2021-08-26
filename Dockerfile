@@ -4,7 +4,9 @@
 # PLease read the GNU Affero General Public License in <https://github.com/TeamHumanoid/Humanoid>.
 
 FROM paman7647/amanpandey:speedo-buster-3.9
-
+# install main requirements.
+COPY requirements.txt /deploy/
+RUN pip3 install -r /deploy/requirements.txt
 # set timezone
 ENV TZ=Asia/Kolkata
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -13,9 +15,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN git clone https://github.com/TeamHumanoid/Humanoid.git /root/TeamHumanoid/
 WORKDIR /root/TeamHumanoid/
 RUN apt-get upgrade python3-pip -y
-# install main requirements.
-COPY requirements.txt /deploy/
-RUN pip3 install -r /deploy/requirements.txt
+
 
 
 # start the bot
