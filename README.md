@@ -12,7 +12,7 @@
 [![Size](https://img.shields.io/github/repo-size/TeamHumanoid/Humanoid?style=flat-square&color=green)](https://github.com/TeamHumanoid/Humanoid/)   
 [![Python](https://img.shields.io/badge/Python-v3.9-blue)](https://www.python.org/)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/TeamHumanoid/Humanoid/graphs/commit-activity)
-[![Docker Pulls](https://img.shields.io/docker/pulls/programmingerror/Humanoid?style=flat-square)](https://img.shields.io/docker/pulls/programmingerror/Humanoid?style=flat-square)
+[![Docker Pulls](https://img.shields.io/docker/pulls/paman7647/amanpandey?style=flat-square)](https://img.shields.io/docker/pulls/programmingerror/Humanoid?style=flat-square)
 [![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/TeamHumanoid/Humanoid)   
 [![Contributors](https://img.shields.io/github/contributors/TeamHumanoid/Humanoid?style=flat-square&color=green)](https://github.com/TeamHumanoid/Humanoid/graphs/contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
