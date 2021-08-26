@@ -2,8 +2,7 @@
 # Copyright (C) 2021 TeamHumanoid
 # This file is a part of < https://github.com/TeamHumanoid/Humanoid/ >
 # PLease read the GNU Affero General Public License in <https://github.com/TeamHumanoid/Humanoid>.
-FROM python:3.9
-FROM paman7647/amanpandey:speedo-buster-3.9
+FROM paman7647/amanpandey:humanoid
 # install main requirements.
 COPY requirements.txt /deploy/
 RUN pip3 install -r /deploy/requirements.txt
