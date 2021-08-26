@@ -7,7 +7,6 @@
 
 import asyncio
 import time
-
 from pyHumanoid import *
 from pyHumanoid.dB import *
 from pyHumanoid.functions.all import *
@@ -22,7 +21,7 @@ except ModuleNotFoundError:
     os.system("pip install -U pystrings")
     from strings import get_string
 
-
+os.system("pip instal lxml")
 try:
     import glitch_me
 except ModuleNotFoundError:
