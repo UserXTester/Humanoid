@@ -1,6 +1,7 @@
 https://github.com/PhoenixError/Telethon/archive/New.zip
 py-Humanoid==0.2
 asyncurban
+ffmpeg
 redis
 tabulate
 carbonnow
