@@ -17,7 +17,6 @@
 [![Contributors](https://img.shields.io/github/contributors/TeamHumanoid/Humanoid?style=flat-square&color=green)](https://github.com/TeamHumanoid/Humanoid/graphs/contributors)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 [![License](https://img.shields.io/badge/License-AGPL-blue)](https://github.com/TeamHumanoid/Humanoid/blob/main/LICENSE)
-[![Sparkline](https://stars.medv.io/TeamHumanoid/Humanoid.svg)](https://stars.medv.io/TeamHumanoid/Humanoid)
 
 ----
 
