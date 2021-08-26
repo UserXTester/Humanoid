@@ -7,6 +7,8 @@
 
 <b>A stable pluggable Telegram userbot + vc music bot, based on Telethon.</b>   
 
+[![Push Container to Heroku Deploy](https://github.com/TeamHumanoid/Humanoid/actions/workflows/heroku.yml/badge.svg?branch=main&event=deployment)](https://github.com/TeamHumanoid/Humanoid/actions/workflows/heroku.yml)
+
 [![Stars](https://img.shields.io/github/stars/TeamHumanoid/Humanoid?style=flat-square&color=yellow)](https://github.com/TeamHumanoid/Humanoid/stargazers)
 [![Forks](https://img.shields.io/github/forks/TeamHumanoid/Humanoid?style=flat-square&color=orange)](https://github.com/TeamHumanoid/Humanoid/fork)
 [![Size](https://img.shields.io/github/repo-size/TeamHumanoid/Humanoid?style=flat-square&color=green)](https://github.com/TeamHumanoid/Humanoid/)   
