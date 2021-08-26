@@ -14,9 +14,5 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # clone the repo and change workdir
 RUN git clone https://github.com/TeamHumanoid/Humanoid.git /root/TeamHumanoid/
 WORKDIR /root/TeamHumanoid/
-RUN apt-get upgrade python3-pip -y
-
-
-
 # start the bot
 CMD ["bash", "resources/startup/startup.sh"]
