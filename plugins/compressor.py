@@ -15,7 +15,7 @@
     Less CRF == High Quality, More Size
     More CRF == Low Quality, Less Size
     CRF Range = 20-51
-    DefaHuman = 27
+    Default = 27
 
 """
 

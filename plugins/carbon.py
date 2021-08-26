@@ -8,7 +8,7 @@
 ✘ Commands Available -
 
 • `{i}carbon <text/reply to msg/reply to document>`
-    Carbonise the text with defaHuman settings.
+    Carbonise the text with default settings.
 
 • `{i}rcarbon <text/reply to msg/reply to document>`
     Carbonise the text, with random bg colours.

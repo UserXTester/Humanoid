@@ -26,14 +26,14 @@ And Turn On auto at morning
 
 • `{i}nmtime <close hour> <close min> <open hour> <open min>
    NightMode Time
-   By DefaHuman Its close 00:00 , open 07:00
+   By Default Its close 00:00 , open 07:00
    Use 24hr format
    Ex- `nmtime 01 00 06 30`
 """
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from pyHumanoid.functions.night_db import *
-from telethon.tl.functions.messages import EditChatDefaHumanBannedRightsRequest
+from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 from telethon.tl.types import ChatBannedRights
 
 from . import *
@@ -103,7 +103,7 @@ async def open_grp():
     for chat in chats:
         try:
             await Humanoid_bot(
-                EditChatDefaHumanBannedRightsRequest(
+                EditChatDefaultBannedRightsRequest(
                     chat,
                     banned_rights=ChatBannedRights(
                         until_date=None,
@@ -130,7 +130,7 @@ async def close_grp():
     for chat in chats:
         try:
             await Humanoid_bot(
-                EditChatDefaHumanBannedRightsRequest(
+                EditChatDefaultBannedRightsRequest(
                     chat,
                     banned_rights=ChatBannedRights(
                         until_date=None,

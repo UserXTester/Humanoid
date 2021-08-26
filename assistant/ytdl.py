@@ -49,7 +49,7 @@ async def _(event):
         link = _yt_base_url + ids
         title = v["title"]
         duration = v["duration"]
-        thumb = f"https://i.ytimg.com/vi/{ids}/hqdefaHuman.jpg"
+        thumb = f"https://i.ytimg.com/vi/{ids}/hqdefault.jpg"
         text = f"**•Tɪᴛʟᴇ•** `{title}`\n\n**••[Lɪɴᴋ]({link})••**\n\n**••Dᴜʀᴀᴛɪᴏɴ••** `{duration}`\n\n\n"
         desc = f"Title : {title}\nDuration : {duration}"
         file = wb(thumb, 0, "image/jpeg", [])
@@ -133,7 +133,7 @@ async def _(event):
         title = ytdl_data["title"]
         artist = ytdl_data["uploader"]
         views = numerize.numerize(ytdl_data["view_count"])
-        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefaHuman.jpg", f"{title}.jpg")
+        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefault.jpg", f"{title}.jpg")
         thumb = f"{title}.jpg"
         duration = ytdl_data["duration"]
         os.rename(f"{ytdl_data['id']}.mp3", f"{title}.mp3")
@@ -164,7 +164,7 @@ async def _(event):
         title = ytdl_data["title"]
         artist = ytdl_data["uploader"]
         views = numerize.numerize(ytdl_data["view_count"])
-        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefaHuman.jpg", f"{title}.jpg")
+        urlretrieve(f"https://i.ytimg.com/vi/{vid_id}/hqdefault.jpg", f"{title}.jpg")
         thumb = f"{title}.jpg"
         duration = ytdl_data["duration"]
         try:

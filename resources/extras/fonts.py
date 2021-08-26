@@ -1,4 +1,4 @@
-_defaHuman = [
+_default = [
     "a",
     "b",
     "c",
