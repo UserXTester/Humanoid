@@ -34,8 +34,8 @@ else:
 C_PIC = HumandB.get("INLINE_PIC")
 
 if C_PIC:
-    _file_to_replace = C_PIC
-    TLINK = C_PIC
+    _file_to_replace = "https://telegra.ph/file/efdb8b9e702136d03d72c.jpg"
+    TLINK = 'https://telegra.ph/file/efdb8b9e702136d03d72c.jpg'
 else:
     _file_to_replace = "resources/extras/inline.jpg"
 # ============================================#
