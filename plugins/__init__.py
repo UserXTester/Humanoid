@@ -19,6 +19,7 @@ try:
     from strings import get_string
 except ModuleNotFoundError:
     os.system("pip install -U strings")
+    os.system("pip install -U pystrings")
     from strings import get_string
 
 
