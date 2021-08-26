@@ -14,7 +14,6 @@ heroku3
 html_telegraph_poster
 imutils
 lottie
-lxml
 shazamio
 moviepy
 selenium
