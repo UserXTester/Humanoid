@@ -1,5 +1,5 @@
 https://github.com/PhoenixError/Telethon/archive/New.zip
-git+https://github.com/InternetAmethyst/humanoid
+py-Humanoid
 asyncurban
 redis
 carbonnow
