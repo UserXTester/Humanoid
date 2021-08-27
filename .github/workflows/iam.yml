@@ -6,7 +6,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Find and Replace
-        uses: jacobtomlinson/gha-find-replace@master
+        uses: jacobtomlinson/gha-find-replace@main
         with:
           find: "resHuman"
           replace: "result"
