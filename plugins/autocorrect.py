@@ -48,7 +48,7 @@ async def gramme(event):
         return
     xx = GingerIt()
     x = xx.parse(t)
-    res = x["resHuman"]
+    res = x["result"]
     try:
         await event.edit(res)
     except BaseException:

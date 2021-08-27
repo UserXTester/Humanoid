@@ -132,4 +132,4 @@ async def _(event):
             f"**Text**: `{mean.word}`\n\n**Meaning**: `{mean.definition}`\n\n**Example**: __{mean.example}__",
         )
     except asyncurban.WordNotFoundError:
-        await xx.edit(f"**No resHuman found for** `{word}`")
+        await xx.edit(f"**No result found for** `{word}`")

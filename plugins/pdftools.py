@@ -57,7 +57,7 @@ async def pdfseimg(event):
     file = ok.media.document
     k = time.time()
     filename = "hehe.pdf"
-    resHuman = await downloader(
+    result = await downloader(
         "pdf/" + filename,
         file,
         xx,
@@ -121,7 +121,7 @@ async def pdfsetxt(event):
     file = ok.media.document
     k = time.time()
     filename = ok.file.name
-    resHuman = await downloader(
+    result = await downloader(
         filename,
         file,
         xx,
@@ -129,7 +129,7 @@ async def pdfsetxt(event):
         "Downloading " + filename + "...",
     )
     await xx.delete()
-    dl = resHuman.name
+    dl = result.name
     if not msg:
         pdf = PdfFileReader(dl)
         text = f"{dl.split('.')[0]}.txt"

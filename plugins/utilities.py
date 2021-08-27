@@ -133,9 +133,9 @@ async def info(event):
 
 @Humanoid_cmd(pattern="listreserved$", ignore_dualmode=True)
 async def _(event):
-    resHuman = await event.client(GetAdminedPublicChannelsRequest())
+    result = await event.client(GetAdminedPublicChannelsRequest())
     output_str = ""
-    r = resHuman.chats
+    r = result.chats
     for channel_obj in r:
         output_str += f"- {channel_obj.title} @{channel_obj.username} \n"
     if not r:

@@ -107,7 +107,7 @@ async def inline_handler(event):
     for x in LIST.values():
         for y in x:
             z.append(y)
-    resHuman = event.builder.photo(
+    result = event.builder.photo(
         file=_file_to_replace,
         link_preview=False,
         text=get_string("inline_4").format(
@@ -118,7 +118,7 @@ async def inline_handler(event):
         ),
         buttons=_main_help_menu,
     )
-    await event.answer([resHuman], gallery=True)
+    await event.answer([result], gallery=True)
 
 
 @in_pattern("haste")
@@ -126,7 +126,7 @@ async def inline_handler(event):
 async def _(event):
     ok = event.text.split(" ")[1]
     link = "https://hastebin.com/"
-    resHuman = event.builder.article(
+    result = event.builder.article(
         title="Paste",
         text="Pᴀsᴛᴇᴅ Tᴏ Hᴀsᴛᴇʙɪɴ!",
         buttons=[
@@ -136,7 +136,7 @@ async def _(event):
             ],
         ],
     )
-    await event.answer([resHuman])
+    await event.answer([result])
 
 
 @callback("ownr")

@@ -57,7 +57,7 @@ async def download(event):
                 elif "video" in mime_type:
                     filename = "video_" + dt.now().isoformat("_", "seconds") + ".mp4"
             try:
-                resHuman = await downloader(
+                result = await downloader(
                     "resources/downloads/" + filename,
                     file,
                     xx,
@@ -66,7 +66,7 @@ async def download(event):
                 )
             except MessageNotModifiedError as err:
                 return await xx.edit(str(err))
-            file_name = resHuman.name
+            file_name = result.name
         else:
             d = "resources/downloads/"
             file_name = await event.client.download_media(

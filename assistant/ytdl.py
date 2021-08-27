@@ -42,8 +42,8 @@ async def _(event):
         return
     result = []
     search = VideosSearch(string, limit=10)
-    nub = search.resHuman()
-    nibba = nub["resHuman"]
+    nub = search.result()
+    nibba = nub["result"]
     for v in nibba:
         ids = v["id"]
         link = _yt_base_url + ids

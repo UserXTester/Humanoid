@@ -89,13 +89,13 @@ async def _(e):
                     user_id="@missrose_bot",
                 ),
             )
-            resHuman = await e.client(
+            result = await e.client(
                 ExportChatInviteRequest(
                     peer=created_chat_id,
                 ),
             )
             await xx.edit(
-                f"Your [{group_name}]({resHuman.link}) Group Made Boss!",
+                f"Your [{group_name}]({result.link}) Group Made Boss!",
                 link_preview=False,
             )
         except Exception as ex:
@@ -110,13 +110,13 @@ async def _(e):
                 ),
             )
             created_chat_id = r.chats[0].id
-            resHuman = await e.client(
+            result = await e.client(
                 ExportChatInviteRequest(
                     peer=created_chat_id,
                 ),
             )
             await xx.edit(
-                f"Your [{group_name}]({resHuman.link}) Group/Channel Has been made Boss!",
+                f"Your [{group_name}]({result.link}) Group/Channel Has been made Boss!",
                 link_preview=False,
             )
         except Exception as ex:

@@ -116,8 +116,8 @@ async def eor(message, text, *args, **kwargs):
 
 async def download(event, query, chat, ts):
     song = f"VCSONG_{chat}_{ts}.raw"
-    search = VideosSearch(query, limit=1).resHuman()
-    noo = search["resHuman"][0]
+    search = VideosSearch(query, limit=1).result()
+    noo = search["result"][0]
     vid_id = noo["id"]
     link = _yt_base_url + vid_id
     opts = {
