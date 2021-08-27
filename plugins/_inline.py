@@ -15,7 +15,7 @@ from git import Repo
 from pyHumanoid.dB.core import *
 from pyHumanoid.misc import owner_and_sudos
 from support import *
-from telethon.tl.types import InputBotInlineResHuman, InputWebDocument
+from telethon.tl.types import InputBotInlineResult, InputWebDocument
 
 from . import *
 
@@ -82,7 +82,7 @@ async def inline_alive(o):
             "https://telegra.ph/file/715c9ce4819248f1106fd.jpg", 0, "image/jpg", []
         )
         RES = [
-            InputBotInlineResHuman(
+            InputBotInlineResult(
                 str(o.id),
                 "photo",
                 send_message=await b._message(
@@ -100,7 +100,7 @@ async def inline_alive(o):
         await o.answer(RES, switch_pm=f"👥 Humanoid PORTAL", switch_pm_param="start")
 
 
-@in_pattern("Humand")
+@in_pattern("ultd")
 @in_owner
 async def inline_handler(event):
     z = []
@@ -311,8 +311,8 @@ async def addon(event):
 
 @callback("rstrt")
 @owner
-async def rrst(Human):
-    await restart(Human)
+async def rrst(ult):
+    await restart(ult)
 
 
 @callback(
@@ -529,9 +529,9 @@ def page_num(page_number, loaded_plugins, prefix, type):
     number_of_cols = 2
     emoji = Redis("EMOJI_IN_HELP")
     if emoji:
-        mHumani = emoji
+        multi = emoji
     else:
-        mHumani = "✘"
+        multi = "✘"
     helpable_plugins = []
     global upage
     upage = page_number
@@ -541,9 +541,9 @@ def page_num(page_number, loaded_plugins, prefix, type):
     modules = [
         Button.inline(
             "{} {} {}".format(
-                mHumani,
+                multi,
                 x,
-                mHumani,
+                multi,
             ),
             data=f"{type}_plugin_{x}",
         )
