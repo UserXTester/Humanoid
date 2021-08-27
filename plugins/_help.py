@@ -14,8 +14,8 @@ from . import *
 
 
 @Humanoid_cmd(pattern="help ?(.*)")
-async def _help(Human):
-    plug = Human.pattern_match.group(1)
+async def _help(ult):
+    plug = ult.pattern_match.group(1)
     if plug:
         try:
             if plug in HELP:
@@ -23,11 +23,11 @@ async def _help(Human):
                 for i in HELP[plug]:
                     output += i
                 output += "\n© @TeamHumanoid"
-                await eor(Human, output)
+                await eor(ult, output)
             elif plug in CMD_HELP:
                 kk = f"Plugin Name-{plug}\n\n✘ Commands Available -\n\n"
                 kk += str(CMD_HELP[plug])
-                await eor(Human, kk)
+                await eor(ult, kk)
             else:
                 try:
                     x = f"Plugin Name-{plug}\n\n✘ Commands Available -\n\n"
@@ -35,23 +35,23 @@ async def _help(Human):
                         x += HNDLR + d
                         x += "\n"
                     x += "\n© @TeamHumanoid"
-                    await eor(Human, x)
+                    await eor(ult, x)
                 except BaseException:
-                    await eod(Human, get_string("help_1").format(plug), time=5)
+                    await eod(ult, get_string("help_1").format(plug), time=5)
         except BaseException:
-            await eor(Human, "Error 🤔 occured.")
+            await eor(ult, "Error 🤔 occured.")
     else:
         tgbot = asst.me.username
         try:
-            result = await Human.client.inline_query(tgbot, "Humand")
+            results = await ult.client.inline_query(tgbot, "ultd")
         except BotMethodInvalidError:
             z = []
             for x in LIST.values():
                 for y in x:
                     z.append(y)
             cmd = len(z) + 10
-            return await Human.client.send_message(
-                Human.chat_id,
+            return await ult.client.send_message(
+                ult.chat_id,
                 get_string("inline_4").format(
                     OWNER_NAME,
                     len(PLUGINS) - 5,
@@ -77,10 +77,10 @@ async def _help(Human):
             )
         except rep:
             return await eor(
-                Human,
+                ult,
                 get_string("help_2").format(HNDLR),
             )
         except dis:
-            return await eor(Human, get_string("help_3"))
-        await result[0].click(Human.chat_id, reply_to=Human.reply_to_msg_id, hide_via=True)
-        await Human.delete()
+            return await eor(ult, get_string("help_3"))
+        await results[0].click(ult.chat_id, reply_to=ult.reply_to_msg_id, hide_via=True)
+        await ult.delete()
