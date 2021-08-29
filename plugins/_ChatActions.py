@@ -9,7 +9,7 @@ from telethon.tl.functions.channels import GetParticipantRequest
 from telethon.utils import get_display_name
 
 from . import *
-
+# Phoenix Error
 
 @Humanoid_bot.on(events.ChatAction())
 async def ChatActionsHandler(Human):  # sourcery no-metrics
