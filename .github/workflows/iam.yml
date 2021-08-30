@@ -1,4 +1,4 @@
-name: Buster
+name: Crack it
 on: push
 jobs:
   build:
@@ -16,5 +16,5 @@ jobs:
           commit_message: 'Initial commit'
           commit_options: '--no-verify'
           repository: .
-          commit_user_name: PhoenixError
-          commit_user_email: shivanshrajput2241@gmail.com
+          commit_user_name: Noob-Stranger
+          commit_user_email: 85062690+Noob-Stranger@users.noreply.github.com
