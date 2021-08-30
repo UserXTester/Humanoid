@@ -40,13 +40,13 @@ from os import remove
 import cv2
 import numpy as np
 from PIL import Image, ImageDraw
-from telethon.utils import get_input_document
 from telethon.errors import ChatSendStickersForbiddenError, PackShortNameOccupiedError
 from telethon.tl.types import (
     DocumentAttributeFilename,
     DocumentAttributeSticker,
     MessageMediaPhoto,
 )
+from telethon.utils import get_input_document
 
 from . import *
 
@@ -478,7 +478,9 @@ async def Humandestroy(event):
     if not event.is_reply:
         return await eor(event, "`Reply to Animated Sticker Only...`")
     if not (
-        Human.media and Human.media.document and "tgsticker" in Human.media.document.mime_type
+        Human.media
+        and Human.media.document
+        and "tgsticker" in Human.media.document.mime_type
     ):
         return await eor(event, "`Reply to Animated Sticker only`")
     await event.client.download_media(Human, "Humanoid.tgs")

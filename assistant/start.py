@@ -7,9 +7,9 @@
 
 from datetime import datetime
 
-from pytz import timezone as tz
 from pyHumanoid.functions.asst_fns import *
 from pyHumanoid.misc import owner_and_sudos
+from pytz import timezone as tz
 from telethon import events
 from telethon.utils import get_display_name
 

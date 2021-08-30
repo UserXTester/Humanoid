@@ -91,7 +91,10 @@ async def gifs(Human):
     else:
         for x in range(n):
             await gifs[x].click(
-                Human.chat.id, reply_to=Human.reply_to_msg_id, silent=True, hide_via=True
+                Human.chat.id,
+                reply_to=Human.reply_to_msg_id,
+                silent=True,
+                hide_via=True,
             )
     await m.delete()
 

@@ -46,7 +46,9 @@ from . import *
 async def lol(Human):
     pic = HumandB.get("ALIVE_PIC")
     uptime = time_formatter((time.time() - start_time) * 1000)
-    header = HumandB.get("ALIVE_TEXT") if HumandB.get("ALIVE_TEXT") else "Hey,  I am alive."
+    header = (
+        HumandB.get("ALIVE_TEXT") if HumandB.get("ALIVE_TEXT") else "Hey,  I am alive."
+    )
     y = Repo().active_branch
     xx = Repo().remotes[0].config_reader.get("url")
     rep = xx.replace(".git", f"/tree/{y}")

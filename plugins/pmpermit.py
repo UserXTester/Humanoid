@@ -325,9 +325,7 @@ if sett == "True":
                 else:
                     try:
                         result = await Humanoid.inline_query(my_bot, f"ip_{user.id}")
-                        await result[0].click(
-                            user.id, reply_to=event.id, hide_via=True
-                        )
+                        await result[0].click(user.id, reply_to=event.id, hide_via=True)
                     except Exception as e:
                         print(e)
             LASTMSG.update({user.id: event.text})

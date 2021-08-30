@@ -14,16 +14,15 @@ import re
 from datetime import datetime as dt
 
 import ffmpeg
+from pyHumanoid import HNDLR, CallsClient, HumandB, Humanoid_bot
+from pyHumanoid import asst as tele_asst
+from pyHumanoid import vcasst as asst
+from pyHumanoid.functions.all import bash, dler, time_formatter
+from pyHumanoid.misc import sudoers
 from pyrogram import Client, filters
 from pyrogram.raw import functions
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pytgcalls import StreamType
-from pyHumanoid import HNDLR, CallsClient
-from pyHumanoid import asst as tele_asst
-from pyHumanoid import HumandB, Humanoid_bot
-from pyHumanoid import vcasst as asst
-from pyHumanoid.functions.all import bash, dler, time_formatter
-from pyHumanoid.misc import sudoers
 from youtube_dl import YoutubeDL
 from youtubesearchpython import VideosSearch
 

@@ -72,7 +72,9 @@ async def warn(e):
     if count + 1 >= number:
         if "ban" in action:
             try:
-                await Humanoid_bot.edit_permissions(e.chat_id, user, view_messages=False)
+                await Humanoid_bot.edit_permissions(
+                    e.chat_id, user, view_messages=False
+                )
             except BaseException:
                 return await eod(e, "`Something Went Wrong.`")
         elif "kick" in action:

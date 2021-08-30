@@ -32,7 +32,9 @@ from strings import get_string
 from . import *
 
 
-@Humanoid_cmd(pattern="google ?(.*)", type=["official", "manager"], ignore_dualmode=True)
+@Humanoid_cmd(
+    pattern="google ?(.*)", type=["official", "manager"], ignore_dualmode=True
+)
 async def google(event):
     inp = event.pattern_match.group(1)
     if not inp:
