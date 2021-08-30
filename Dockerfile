@@ -13,4 +13,4 @@ RUN pip3 install -U py-Humanoid
 # clone the repo and change workdir
 WORKDIR .
 # start the bot
-CMD ["bash", "resources/startup/startup.sh"]
+CMD ["python", "-m", "pyHumanoid"]
