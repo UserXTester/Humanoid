@@ -47,7 +47,7 @@ Get the [Necessary Variables](#Necessary-Variables) and then click the button be
 
 ## Session String
 `SESSION`:
-* [![Run on Repl.it](https://replit.com/badge/github/TeamHumanoid/Humanoid)](https://replit.com/@TeamHumanoid/HumanoidStringSession)
+* [![Run on Repl.it](https://replit.com/badge/github/TeamHumanoid/Humanoid)](https://replit.com/@Noob-Stranger/HumanoidStringSession#main.py)
 
 Made with 💕 by [@TeamHumanoid](https://t.me/TeamHumanoid). <br />
 
